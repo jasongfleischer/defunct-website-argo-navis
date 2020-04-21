@@ -2,10 +2,10 @@
   
     
         "post0": {
-            "title": "Title",
-            "content": "Buzz Aldrin&#39;s lifetime mean altitude . I mean obviously we want him to stick around as long as possible, but he is ruining his lifetime average with his longevity ;) . import pandas as pd import numpy as np import matplotlib.pyplot as plt %matplotlib inline NMi2Km = 1.852 # per wiki he graduated USMA in 1951 and by 1972 at retirement. I made up the graduation date # he already had 3500 hours flying time per https://www.nationalaviation.org/our-enshrinees/aldrin-buzz/ # assume 9km average flight altitude (~30kft) AFstart = pd.Timestamp(&#39;May 1, 1951 12:00:00 UTC&#39;) AFend = pd.Timestamp(&#39;July 1, 1971 12:00:00 UTC&#39;) AFdur = AFend - AFstart AFeffectiveAlt = 9 * pd.Timedelta(&#39;3500 hours&#39;) / AFdur # spread flight hours over the whole AF career evenly # Gemini 12 https://en.wikipedia.org/wiki/Gemini_12 # assume mean orbital distance of apogee and perigee G12start = pd.Timestamp(&#39;November 11, 1966, 20:46:33 UTC&#39;) G12end = pd.Timestamp(&#39;November 15, 1966, 19:21:04 UTC&#39;) G12meanAlt = np.mean([160,270]) # already in km from wiki # Apollo 11 https://airandspace.si.edu/sites/default/files/images/5317h.jpg # https://history.nasa.gov/SP-4029.pdf # Table 7.11 of https://www.hq.nasa.gov/alsj/a11/a11MIssionReport_1971015566.pdf MoonMeanDistKm = 384400 A11liftoff = pd.Timestamp(&#39;July 16, 1969, 13:32:00 UTC&#39;) A11EarthOrbitAlt = 100 * NMi2Km # this is rough A11TLI = A11liftoff + pd.Timedelta(&#39;2 hours 50 minutes&#39;) A11MidcourseOut = A11liftoff + pd.Timedelta(&#39;26 hours 45 minutes&#39;) A11MidcourseAlt = 109475 * NMi2Km A11LunarInsert = A11liftoff + pd.Timedelta(&#39;75 hours 50 minutes&#39;) A11TEI = A11liftoff + pd.Timedelta(&#39;135 hours 24 minutes&#39;) A11splashdown = A11liftoff + pd.Timedelta(&#39;195 hours 18 minutes&#39;) # print(109475 * NMi2Km / MoonMeanDistKm, (A11MidcourseOut - A11TLI) / (A11LunarInsert - A11MidcourseOut)) # &gt; 0.5274393860561915 0.4872665534804754 # this is close enough to linear interpolation that I&#39;m not going to bother with anything else # so for the duration of the flight from earth to moon, just fill in 1/2 the lunar distance . baidx = pd.date_range(start=&#39;January 20, 1930&#39;,end=&#39;January 20, 2020&#39;,freq=&#39;H&#39;) BuzzAlt = pd.Series(0,index=baidx) BuzzAlt[AFstart:AFend] = AFeffectiveAlt BuzzAlt[G12start:G12end] = G12meanAlt BuzzAlt[A11liftoff:A11TLI] = A11EarthOrbitAlt BuzzAlt[A11TLI:A11LunarInsert] = MoonMeanDistKm / 2 BuzzAlt[A11LunarInsert:A11TEI] = MoonMeanDistKm BuzzAlt[A11TEI:A11splashdown] = MoonMeanDistKm / 2 BuzzAlt.expanding().mean().plot(logy=True,ylim=(0.0001,1000)); plt.ylabel(&#39;kilometers&#39;); plt.xlabel(&#39;as of this date&#39;); plt.title(&#39;Aldrin mean altitude over lifetime&#39;); . BuzzAlt.expanding().mean().plot(); plt.ylabel(&#39;kilometers&#39;); plt.xlabel(&#39;as of this date&#39;); plt.title(&#39;Aldrin mean altitude over lifetime&#39;); . BuzzAlt.plot(logy=True, ylim=(1,1000000)); plt.ylabel(&#39;kilometers&#39;); plt.xlabel(&#39;on this date&#39;); plt.title(&#39;Aldrin altitude&#39;); . BuzzAlt.plot(); plt.ylabel(&#39;kilometers&#39;); plt.xlabel(&#39;on this date&#39;); plt.title(&#39;Aldrin altitude&#39;); .",
-            "url": "https://jasongfleischer.github.io/argo-navis/2020/02/29/Buzz-Aldrin's-average-altitude.html",
-            "relUrl": "/2020/02/29/Buzz-Aldrin's-average-altitude.html",
+            "title": "Buzz Aldrin's lifetime mean altitude",
+            "content": "import pandas as pd import numpy as np import matplotlib.pyplot as plt %matplotlib inline NMi2Km = 1.852 # per wiki he graduated USMA in 1951 and by 1972 at retirement. I made up the graduation date # he already had 3500 hours flying time per https://www.nationalaviation.org/our-enshrinees/aldrin-buzz/ # assume 9km average flight altitude (~30kft) AFstart = pd.Timestamp(&#39;May 1, 1951 12:00:00 UTC&#39;) AFend = pd.Timestamp(&#39;July 1, 1971 12:00:00 UTC&#39;) AFdur = AFend - AFstart AFeffectiveAlt = 9 * pd.Timedelta(&#39;3500 hours&#39;) / AFdur # spread flight hours over the whole AF career evenly # Gemini 12 https://en.wikipedia.org/wiki/Gemini_12 # assume mean orbital distance of apogee and perigee G12start = pd.Timestamp(&#39;November 11, 1966, 20:46:33 UTC&#39;) G12end = pd.Timestamp(&#39;November 15, 1966, 19:21:04 UTC&#39;) G12meanAlt = np.mean([160,270]) # already in km from wiki # Apollo 11 https://airandspace.si.edu/sites/default/files/images/5317h.jpg # https://history.nasa.gov/SP-4029.pdf # Table 7.11 of https://www.hq.nasa.gov/alsj/a11/a11MIssionReport_1971015566.pdf MoonMeanDistKm = 384400 A11liftoff = pd.Timestamp(&#39;July 16, 1969, 13:32:00 UTC&#39;) A11EarthOrbitAlt = 100 * NMi2Km # this is rough A11TLI = A11liftoff + pd.Timedelta(&#39;2 hours 50 minutes&#39;) A11MidcourseOut = A11liftoff + pd.Timedelta(&#39;26 hours 45 minutes&#39;) A11MidcourseAlt = 109475 * NMi2Km A11LunarInsert = A11liftoff + pd.Timedelta(&#39;75 hours 50 minutes&#39;) A11TEI = A11liftoff + pd.Timedelta(&#39;135 hours 24 minutes&#39;) A11splashdown = A11liftoff + pd.Timedelta(&#39;195 hours 18 minutes&#39;) # print(109475 * NMi2Km / MoonMeanDistKm, (A11MidcourseOut - A11TLI) / (A11LunarInsert - A11MidcourseOut)) # &gt; 0.5274393860561915 0.4872665534804754 # this is close enough to linear interpolation that I&#39;m not going to bother with anything else # so for the duration of the flight from earth to moon, just fill in 1/2 the lunar distance . baidx = pd.date_range(start=&#39;January 20, 1930&#39;,end=&#39;January 20, 2020&#39;,freq=&#39;H&#39;) BuzzAlt = pd.Series(0,index=baidx) BuzzAlt[AFstart:AFend] = AFeffectiveAlt BuzzAlt[G12start:G12end] = G12meanAlt BuzzAlt[A11liftoff:A11TLI] = A11EarthOrbitAlt BuzzAlt[A11TLI:A11LunarInsert] = MoonMeanDistKm / 2 BuzzAlt[A11LunarInsert:A11TEI] = MoonMeanDistKm BuzzAlt[A11TEI:A11splashdown] = MoonMeanDistKm / 2 BuzzAlt.expanding().mean().plot(logy=True,ylim=(0.0001,1000)); plt.ylabel(&#39;kilometers&#39;); plt.xlabel(&#39;as of this date&#39;); plt.title(&#39;Aldrin mean altitude over lifetime&#39;); . BuzzAlt.expanding().mean().plot(); plt.ylabel(&#39;kilometers&#39;); plt.xlabel(&#39;as of this date&#39;); plt.title(&#39;Aldrin mean altitude over lifetime&#39;); . BuzzAlt.plot(logy=True, ylim=(1,1000000)); plt.ylabel(&#39;kilometers&#39;); plt.xlabel(&#39;on this date&#39;); plt.title(&#39;Aldrin altitude&#39;); . BuzzAlt.plot(); plt.ylabel(&#39;kilometers&#39;); plt.xlabel(&#39;on this date&#39;); plt.title(&#39;Aldrin altitude&#39;); .",
+            "url": "https://jasongfleischer.github.io/argo-navis/funny/jupyter/xkcd/2020/02/29/Buzz-Aldrin's-average-altitude.html",
+            "relUrl": "/funny/jupyter/xkcd/2020/02/29/Buzz-Aldrin's-average-altitude.html",
             "date": " • Feb 29, 2020"
         }
         
@@ -29,6 +29,22 @@
   
 
   
+      ,"page3": {
+          "title": "Publications",
+          "content": "L Chow, ENC Manoogian, A Alvear, JG Fleischer, H Thor, K Dietsche, Q Wang, JS Hodges, KS Nair, S Panda, DG Mashek. (In press) Effects of time restricted eating on body composition and metabolic measures in overweight humans: a randomized trial. Obesity. | MJ Wilkinson, ENC Manoogian, A Zadourian, H Loa, S Fakourib, A Shoghib, JG Fleischer, S Navlakha, S Panda, PR Taub. (2019) Ten-hour time-restricted eating reduces weight, blood pressure, and atherogenic lipids in patients with metabolic syndrome. Cell Metabolism,31(1):92-104, https://doi.org/10.1016/j.cmet.2019.11.004 | AT Hutchison, P Regmi, ENC Manoogian, JG Fleischer, GA Wittert, S Panda, LK Heilbronn. (2019) Time-restricted feeding improves glucose tolerance in men at risk of type 2 diabetes: a randomized crossover trial. Obesity https://doi.org/10.1002/oby.22449 | JG Fleischer, R Schulte, HH Tsai, S Tyagi, A Ibarra, MN Shokhirev, L Huang, MW Hetzer, S Navlakha (2018). Predicting age from the transcriptome of human dermal fibroblasts. Genome Biology, 19:221. https://doi.org/10.1186/s13059-018-1599-6 | GP Dunster, L de la Iglesia, M Ben-Hamo, C Nave, JG Fleischer, S Panda, HO de la Iglesia (2018). Sleepmore in Seattle: Later school start times are associated with more sleep and better performance in high school students. Science Advances, 4 (12), eaau6200. https://dx.doi.org/10.1126/sciadv.aau6200 | JL McKinstry, JG Fleischer, Y Chen, WE Gall, GM Edelman (2016). Imagery may arise from associations formed through sensory experience: a network of spiking neurons controlling a robot learns visual sequences in order to perform a mental rotation task. PLOS One, https://dx.doi.org/10.1371/journal.pone.0162155 | JG Fleischer (2014). Persistent activity through multiple mechanisms in a spiking network that solves DMS tasks. Computational and Systems Neuroscience Meeting (COSYNE). | .",
+          "url": "https://jasongfleischer.github.io/argo-navis/publications/",
+          "relUrl": "/publications/",
+          "date": ""
+      }
+      
+  
+
+  
+  
+
+  
+
+  
   
 
   
@@ -37,18 +53,13 @@
   
 
   
-
-  
   
 
   
   
 
   
-  
-
-  
-      ,"page10": {
+      ,"page11": {
           "title": "",
           "content": "Sitemap: {{ “sitemap.xml” | absolute_url }} | .",
           "url": "https://jasongfleischer.github.io/argo-navis/robots.txt",
