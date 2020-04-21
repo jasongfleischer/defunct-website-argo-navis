@@ -93,7 +93,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      32 min read
+      29 min read
     
 </span></p>
 
@@ -542,7 +542,7 @@ The classic model of disease outbreaks is an exponential function.  One person i
     <span class="sd">&#39;&#39;&#39;This is the form of an exponential function which we will fit to pandemic data&#39;&#39;&#39;</span>
     <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">b</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> 
     
-<span class="k">def</span> <span class="nf">estimate_doubling_time</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">estimate_doubling_time</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Given some data, fits parameters for an exponential function defined in exfunc()</span>
 <span class="sd">    and returns the resulting doubling time along with other useful info</span>
@@ -576,9 +576,11 @@ The classic model of disease outbreaks is an exponential function.  One person i
     <span class="c1"># so we have to translate from std deviation of parameter b to std deviation of doubling time</span>
     <span class="n">ci95</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">pest</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">sigmas</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="n">doubling_time</span><span class="p">)</span><span class="o">*</span><span class="n">tval</span> 
 
-    <span class="c1"># output results of this fit </span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;t:</span><span class="si">{:4.3f}</span><span class="s1"> p0:[</span><span class="si">{:4.3f}</span><span class="s1">+/-</span><span class="si">{:4.3f}</span><span class="s1">] p1:[</span><span class="si">{:4.3f}</span><span class="s1">+/-</span><span class="si">{:4.3f}</span><span class="s1">] dtime:</span><span class="si">{:4.3f}</span><span class="s1">+/-</span><span class="si">{:4.3f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-        <span class="n">tval</span><span class="p">,</span> <span class="n">pest</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sigmas</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pest</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">sigmas</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">doubling_time</span><span class="p">,</span> <span class="n">ci95</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="c1"># output results of this fit </span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;t:</span><span class="si">{:4.3f}</span><span class="s1"> p0:[</span><span class="si">{:4.3f}</span><span class="s1">+/-</span><span class="si">{:4.3f}</span><span class="s1">] p1:[</span><span class="si">{:4.3f}</span><span class="s1">+/-</span><span class="si">{:4.3f}</span><span class="s1">] dtime:</span><span class="si">{:4.3f}</span><span class="s1">+/-</span><span class="si">{:4.3f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">tval</span><span class="p">,</span> <span class="n">pest</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sigmas</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pest</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">sigmas</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">doubling_time</span><span class="p">,</span> <span class="n">ci95</span><span class="p">))</span>
+    
     <span class="k">return</span><span class="p">(</span><span class="n">doubling_time</span><span class="p">,</span> <span class="n">ci95</span><span class="p">,</span> <span class="n">pest</span><span class="p">,</span> <span class="n">pcov</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">days_to_value</span><span class="p">(</span><span class="n">pest</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
@@ -608,11 +610,14 @@ The classic model of disease outbreaks is an exponential function.  One person i
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
+<details class="description">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p><div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">totals</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse</span>
+<span class="n">totals</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;San Diego County COVID-19 history&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;Plots/chistory.png&#39;</span><span class="p">,</span><span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">);</span>
 </pre></div>
@@ -620,7 +625,8 @@ The classic model of disease outbreaks is an exponential function.  One person i
     </div>
 </div>
 </div>
-
+</p>
+    </details>
 <div class="output_wrapper">
 <div class="output">
 
@@ -651,11 +657,14 @@ The classic model of disease outbreaks is an exponential function.  One person i
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
+<details class="description">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p><div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">frac</span> <span class="o">=</span> <span class="n">totals</span><span class="p">[[</span><span class="s1">&#39;Hospitalizations&#39;</span><span class="p">,</span><span class="s1">&#39;ICU patients&#39;</span><span class="p">,</span><span class="s1">&#39;Deaths&#39;</span><span class="p">]]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse</span>
+<span class="n">frac</span> <span class="o">=</span> <span class="n">totals</span><span class="p">[[</span><span class="s1">&#39;Hospitalizations&#39;</span><span class="p">,</span><span class="s1">&#39;ICU patients&#39;</span><span class="p">,</span><span class="s1">&#39;Deaths&#39;</span><span class="p">]]</span>
 <span class="n">frac</span> <span class="o">=</span> <span class="n">frac</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">/</span><span class="n">totals</span><span class="p">[</span><span class="s1">&#39;Confirmed cases&#39;</span><span class="p">])</span>
 <span class="n">frac</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="mi">1</span><span class="p">:]);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;To date, fraction of total confirmed COVID-19 cases resulting in ...&#39;</span><span class="p">);</span>
@@ -664,7 +673,8 @@ The classic model of disease outbreaks is an exponential function.  One person i
     </div>
 </div>
 </div>
-
+</p>
+    </details>
 <div class="output_wrapper">
 <div class="output">
 
@@ -688,11 +698,14 @@ The classic model of disease outbreaks is an exponential function.  One person i
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
+<details class="description">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p><div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">frac</span> <span class="o">=</span> <span class="n">totals</span><span class="p">[[</span><span class="s1">&#39;ICU patients&#39;</span><span class="p">,</span><span class="s1">&#39;Deaths&#39;</span><span class="p">]]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse</span>
+<span class="n">frac</span> <span class="o">=</span> <span class="n">totals</span><span class="p">[[</span><span class="s1">&#39;ICU patients&#39;</span><span class="p">,</span><span class="s1">&#39;Deaths&#39;</span><span class="p">]]</span>
 <span class="n">frac</span> <span class="o">=</span> <span class="n">frac</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">/</span><span class="n">totals</span><span class="p">[</span><span class="s1">&#39;Hospitalizations&#39;</span><span class="p">])</span>
 <span class="n">frac</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="mi">1</span><span class="p">:]);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;To date, fraction of COVID-19 hospitalizations resulting in ...&#39;</span><span class="p">);</span>
@@ -701,7 +714,8 @@ The classic model of disease outbreaks is an exponential function.  One person i
     </div>
 </div>
 </div>
-
+</p>
+    </details>
 <div class="output_wrapper">
 <div class="output">
 
@@ -733,11 +747,14 @@ The classic model of disease outbreaks is an exponential function.  One person i
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
+<details class="description">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p><div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Obviously the first date (20th or 21st depending on metric) is ignorable because it contains all previous days</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse</span>
+<span class="c1"># Obviously the first date (20th or 21st depending on metric) is ignorable because it contains all previous days</span>
 <span class="c1"># Also I&#39;m pretty sure the -5 hospitalizations on 23rd indicates that some data reclassification happened that day, not that some people were cured and walked out of hospital.</span>
 <span class="n">totals</span><span class="o">.</span><span class="n">diff</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39;Todays new &#39;</span><span class="o">+</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;San Diego County COVID daily increases:</span><span class="se">\n</span><span class="s1">Increases would be growing exponentially if the curve was not flattening&#39;</span><span class="p">)</span>
@@ -747,7 +764,8 @@ The classic model of disease outbreaks is an exponential function.  One person i
     </div>
 </div>
 </div>
-
+</p>
+    </details>
 <div class="output_wrapper">
 <div class="output">
 
@@ -771,9 +789,11 @@ The classic model of disease outbreaks is an exponential function.  One person i
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a id="flat"></a></p>
-<h2 id="Is-the-curve-flattening?">Is the curve flattening?<a class="anchor-link" href="#Is-the-curve-flattening?"> </a></h2><p>Doubling time is the # of days for the number of cases/hospitalizations to double. Small numbers are bad, they mean a steep curve.  Big numbers are good, they mean the exponential is flattening.</p>
+<h2 id="Is-the-curve-flattening?">Is the curve flattening?<a class="anchor-link" href="#Is-the-curve-flattening?"> </a></h2><p>Doubling time is the numbe of days it takes some measurement to double. This is a common way to see how fast a geometric/exponential growth process is taking off.  Unfortunately, the early part of an epidemic is indeed a geometric growth process. For or epidemics, small numbers are bad, they mean a steep curve.  Big numbers are good, they mean the exponential is flattening out and people are getting sick at a slower rate.</p>
+<p>Note that this kind of metric is only good when we are in the first half of epidemic.  Once we reach the peak of infections and start to have LESS people sick, this kind of metric becomes useless and my mathematical method will produce incorrect values.</p>
 <p>I'm using a sliding 7 day window to see how the doubling time is changing from day to day.  I'm using t-statistic estimated 95% confidence intervals on the exponential fit to estimate a range of plausibitlty in the estimates.  When you see that April 10th has no overlap with the value on March 27th, you can be very sure that the difference is real, the curve is flattening, and it isn't just random noise causing this.</p>
-<p>TL;DR To see if the outbreak is slowing, we want the doubling time to get quite a bit bigger.  And we are seeing that, bigtime!!!</p>
+<p>TL;DR To see if the outbreak is slowing, we want the doubling time to get quite a bit bigger.  And we are seeing that, bigtime!!!  We might even be close to a peak.</p>
+<p>BUT, remember that we can always climb back onto an upward trajectory if we stop social distancing! Just because you're halfway down the mountain in your car, do you stop using your brakes?</p>
 
 </div>
 </div>
@@ -781,13 +801,18 @@ The classic model of disease outbreaks is an exponential function.  One person i
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
+<details class="description">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p><div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># The 27th is the first date I&#39;d trust since that elimantes the big delta of </span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse </span>
+
+<span class="c1"># The 27th is the first date I&#39;d trust since that elimantes the big delta of </span>
 <span class="c1"># the 1st data point on I collected on March 20th.</span>
 
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Lets look at the growth rate of confirmed cases (positive COVID-19 tests)...&#39;</span><span class="p">)</span>
 <span class="n">start_calc</span> <span class="o">=</span> <span class="s1">&#39;2020-03-27&#39;</span>
 <span class="n">ex</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">er</span> <span class="o">=</span> <span class="p">[]</span>
@@ -813,38 +838,15 @@ The classic model of disease outbreaks is an exponential function.  One person i
     </div>
 </div>
 </div>
-
+</p>
+    </details>
 <div class="output_wrapper">
 <div class="output">
 
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>t:2.571 p0:[163.419+/-6.718] p1:[0.152+/-0.009] dtime:4.558+/-0.748
-t:2.571 p0:[189.203+/-7.006] p1:[0.156+/-0.008] dtime:4.449+/-0.634
-t:2.571 p0:[223.507+/-9.631] p1:[0.147+/-0.010] dtime:4.725+/-0.853
-t:2.571 p0:[260.191+/-10.238] p1:[0.143+/-0.009] dtime:4.857+/-0.823
-t:2.571 p0:[301.414+/-10.366] p1:[0.145+/-0.008] dtime:4.779+/-0.688
-t:2.571 p0:[346.973+/-10.666] p1:[0.148+/-0.007] dtime:4.694+/-0.588
-t:2.571 p0:[405.719+/-10.605] p1:[0.145+/-0.006] dtime:4.781+/-0.517
-t:2.571 p0:[466.635+/-10.257] p1:[0.146+/-0.005] dtime:4.764+/-0.428
-t:2.571 p0:[546.515+/-16.961] p1:[0.137+/-0.007] dtime:5.046+/-0.697
-t:2.571 p0:[653.222+/-21.106] p1:[0.123+/-0.007] dtime:5.656+/-0.938
-t:2.571 p0:[779.091+/-23.922] p1:[0.104+/-0.007] dtime:6.686+/-1.288
-t:2.571 p0:[907.715+/-30.874] p1:[0.085+/-0.008] dtime:8.137+/-2.231
-t:2.571 p0:[1032.789+/-29.127] p1:[0.070+/-0.007] dtime:9.918+/-2.820
-t:2.571 p0:[1146.901+/-17.591] p1:[0.059+/-0.004] dtime:11.659+/-2.073
-t:2.571 p0:[1241.277+/-13.384] p1:[0.053+/-0.003] dtime:13.073+/-1.825
-t:2.571 p0:[1330.884+/-7.353] p1:[0.048+/-0.001] dtime:14.552+/-1.142
-t:2.571 p0:[1407.610+/-12.532] p1:[0.044+/-0.002] dtime:15.884+/-2.260
-t:2.571 p0:[1483.265+/-17.747] p1:[0.039+/-0.003] dtime:17.647+/-3.885
-t:2.571 p0:[1561.170+/-13.940] p1:[0.036+/-0.002] dtime:19.436+/-3.486
-t:2.571 p0:[1632.103+/-8.743] p1:[0.034+/-0.001] dtime:20.476+/-2.270
-t:2.571 p0:[1687.072+/-9.590] p1:[0.035+/-0.001] dtime:20.015+/-2.303
-t:2.571 p0:[1742.070+/-9.358] p1:[0.035+/-0.001] dtime:19.528+/-2.061
-t:2.571 p0:[1799.132+/-8.595] p1:[0.036+/-0.001] dtime:19.444+/-1.808
-t:2.571 p0:[1869.229+/-12.334] p1:[0.034+/-0.002] dtime:20.492+/-2.829
-t:2.571 p0:[1952.489+/-11.098] p1:[0.030+/-0.001] dtime:22.914+/-3.061
+<pre>Lets look at the growth rate of confirmed cases (positive COVID-19 tests)...
 </pre>
 </div>
 </div>
@@ -869,14 +871,19 @@ t:2.571 p0:[1952.489+/-11.098] p1:[0.030+/-0.001] dtime:22.914+/-3.061
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
+<details class="description">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p><div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># hospitalizations has a weird negative change on the 23rd, due (I think) to them removing</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse</span>
+
+<span class="c1"># hospitalizations has a weird negative change on the 23rd, due (I think) to them removing</span>
 <span class="c1"># non-SD county residents from the data who were in hospital here</span>
 <span class="c1"># this negative prbably results in us underestimating the doubling time on 3/27</span>
 
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Lets look at the growth rate of hospitalizations for COVID-19...&#39;</span><span class="p">)</span>
 <span class="n">start_calc</span> <span class="o">=</span> <span class="s1">&#39;2020-03-27&#39;</span>
 <span class="n">ex</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">er</span> <span class="o">=</span> <span class="p">[]</span>
@@ -902,38 +909,15 @@ t:2.571 p0:[1952.489+/-11.098] p1:[0.030+/-0.001] dtime:22.914+/-3.061
     </div>
 </div>
 </div>
-
+</p>
+    </details>
 <div class="output_wrapper">
 <div class="output">
 
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>t:2.571 p0:[30.144+/-2.402] p1:[0.168+/-0.017] dtime:4.130+/-1.228
-t:2.571 p0:[34.786+/-2.189] p1:[0.171+/-0.014] dtime:4.042+/-0.901
-t:2.571 p0:[41.040+/-2.292] p1:[0.165+/-0.012] dtime:4.191+/-0.860
-t:2.571 p0:[51.606+/-2.635] p1:[0.144+/-0.011] dtime:4.827+/-1.075
-t:2.571 p0:[62.549+/-1.798] p1:[0.130+/-0.007] dtime:5.321+/-0.723
-t:2.571 p0:[72.080+/-1.579] p1:[0.129+/-0.005] dtime:5.373+/-0.556
-t:2.571 p0:[82.532+/-1.477] p1:[0.129+/-0.004] dtime:5.369+/-0.450
-t:2.571 p0:[91.797+/-1.558] p1:[0.137+/-0.004] dtime:5.064+/-0.375
-t:2.571 p0:[105.753+/-2.339] p1:[0.132+/-0.005] dtime:5.254+/-0.535
-t:2.571 p0:[123.446+/-3.726] p1:[0.122+/-0.007] dtime:5.698+/-0.887
-t:2.571 p0:[144.726+/-4.513] p1:[0.108+/-0.007] dtime:6.427+/-1.200
-t:2.571 p0:[167.693+/-4.399] p1:[0.094+/-0.006] dtime:7.349+/-1.341
-t:2.571 p0:[189.631+/-3.050] p1:[0.086+/-0.004] dtime:8.066+/-0.980
-t:2.571 p0:[209.900+/-1.383] p1:[0.083+/-0.002] dtime:8.366+/-0.422
-t:2.571 p0:[227.727+/-1.357] p1:[0.083+/-0.001] dtime:8.353+/-0.380
-t:2.571 p0:[249.251+/-2.480] p1:[0.079+/-0.002] dtime:8.744+/-0.708
-t:2.571 p0:[273.234+/-4.357] p1:[0.073+/-0.004] dtime:9.479+/-1.379
-t:2.571 p0:[301.946+/-7.719] p1:[0.061+/-0.006] dtime:11.330+/-3.399
-t:2.571 p0:[329.195+/-6.330] p1:[0.053+/-0.005] dtime:13.007+/-3.362
-t:2.571 p0:[351.665+/-5.250] p1:[0.052+/-0.004] dtime:13.382+/-2.715
-t:2.571 p0:[371.809+/-5.125] p1:[0.051+/-0.004] dtime:13.560+/-2.563
-t:2.571 p0:[391.650+/-5.370] p1:[0.050+/-0.003] dtime:13.896+/-2.687
-t:2.571 p0:[412.831+/-6.593] p1:[0.047+/-0.004] dtime:14.777+/-3.624
-t:2.571 p0:[435.308+/-7.993] p1:[0.043+/-0.005] dtime:16.165+/-5.148
-t:2.571 p0:[466.366+/-6.671] p1:[0.034+/-0.004] dtime:20.567+/-6.597
+<pre>Lets look at the growth rate of hospitalizations for COVID-19...
 </pre>
 </div>
 </div>
@@ -958,12 +942,16 @@ t:2.571 p0:[466.366+/-6.671] p1:[0.034+/-0.004] dtime:20.567+/-6.597
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
+<details class="description">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p><div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ICU patients</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse</span>
 
+<span class="c1"># ICU patients</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Lets look at the growth rate of COVID-19 patients in intensive care beds...&#39;</span><span class="p">)</span>
 <span class="n">start_calc</span> <span class="o">=</span> <span class="s1">&#39;2020-03-27&#39;</span>
 <span class="n">ex</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">er</span> <span class="o">=</span> <span class="p">[]</span>
@@ -989,38 +977,15 @@ t:2.571 p0:[466.366+/-6.671] p1:[0.034+/-0.004] dtime:20.567+/-6.597
     </div>
 </div>
 </div>
-
+</p>
+    </details>
 <div class="output_wrapper">
 <div class="output">
 
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>t:2.571 p0:[12.762+/-0.676] p1:[0.183+/-0.011] dtime:3.794+/-0.649
-t:2.571 p0:[15.864+/-0.896] p1:[0.168+/-0.012] dtime:4.128+/-0.841
-t:2.571 p0:[19.711+/-1.073] p1:[0.150+/-0.012] dtime:4.618+/-1.041
-t:2.571 p0:[24.311+/-1.220] p1:[0.129+/-0.011] dtime:5.360+/-1.336
-t:2.571 p0:[29.514+/-0.792] p1:[0.110+/-0.006] dtime:6.316+/-0.983
-t:2.571 p0:[32.896+/-0.821] p1:[0.112+/-0.006] dtime:6.204+/-0.875
-t:2.571 p0:[37.831+/-0.571] p1:[0.103+/-0.004] dtime:6.700+/-0.613
-t:2.571 p0:[40.668+/-1.284] p1:[0.117+/-0.007] dtime:5.916+/-1.011
-t:2.571 p0:[45.817+/-1.397] p1:[0.114+/-0.007] dtime:6.092+/-1.039
-t:2.571 p0:[52.186+/-1.969] p1:[0.104+/-0.009] dtime:6.654+/-1.593
-t:2.571 p0:[59.409+/-2.199] p1:[0.094+/-0.009] dtime:7.369+/-1.961
-t:2.571 p0:[67.615+/-2.045] p1:[0.082+/-0.007] dtime:8.419+/-2.116
-t:2.571 p0:[74.221+/-1.922] p1:[0.081+/-0.006] dtime:8.565+/-1.855
-t:2.571 p0:[82.068+/-1.400] p1:[0.077+/-0.004] dtime:8.978+/-1.316
-t:2.571 p0:[87.556+/-1.050] p1:[0.080+/-0.003] dtime:8.713+/-0.853
-t:2.571 p0:[95.715+/-2.020] p1:[0.073+/-0.005] dtime:9.487+/-1.863
-t:2.571 p0:[105.024+/-2.338] p1:[0.065+/-0.006] dtime:10.657+/-2.548
-t:2.571 p0:[115.086+/-2.625] p1:[0.055+/-0.006] dtime:12.660+/-3.828
-t:2.571 p0:[125.267+/-1.421] p1:[0.046+/-0.003] dtime:15.156+/-2.643
-t:2.571 p0:[132.632+/-0.839] p1:[0.043+/-0.002] dtime:16.028+/-1.612
-t:2.571 p0:[138.539+/-0.884] p1:[0.044+/-0.002] dtime:15.848+/-1.587
-t:2.571 p0:[145.286+/-1.757] p1:[0.040+/-0.003] dtime:17.247+/-3.740
-t:2.571 p0:[152.843+/-1.964] p1:[0.036+/-0.003] dtime:19.396+/-5.152
-t:2.571 p0:[160.273+/-2.546] p1:[0.030+/-0.004] dtime:23.054+/-9.562
-t:2.571 p0:[168.902+/-2.399] p1:[0.022+/-0.004] dtime:31.950+/-17.377
+<pre>Lets look at the growth rate of COVID-19 patients in intensive care beds...
 </pre>
 </div>
 </div>
@@ -1045,12 +1010,16 @@ t:2.571 p0:[168.902+/-2.399] p1:[0.022+/-0.004] dtime:31.950+/-17.377
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
+<details class="description">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p><div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Deaths</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse</span>
 
+<span class="c1"># Deaths</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Lets look at the growth rate of COVID-19 deaths...&#39;</span><span class="p">)</span>
 <span class="n">start_calc</span> <span class="o">=</span> <span class="s1">&#39;2020-03-27&#39;</span>
 <span class="n">ex</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">er</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1076,38 +1045,15 @@ t:2.571 p0:[168.902+/-2.399] p1:[0.022+/-0.004] dtime:31.950+/-17.377
     </div>
 </div>
 </div>
-
+</p>
+    </details>
 <div class="output_wrapper">
 <div class="output">
 
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>t:2.571 p0:[0.466+/-0.122] p1:[0.390+/-0.049] dtime:1.775+/-0.661
-t:2.571 p0:[0.752+/-0.104] p1:[0.371+/-0.026] dtime:1.866+/-0.366
-t:2.571 p0:[1.436+/-0.319] p1:[0.282+/-0.044] dtime:2.459+/-1.173
-t:2.571 p0:[2.405+/-0.536] p1:[0.201+/-0.047] dtime:3.448+/-2.715
-t:2.571 p0:[3.150+/-0.555] p1:[0.179+/-0.038] dtime:3.863+/-2.672
-t:2.571 p0:[3.421+/-0.705] p1:[0.229+/-0.043] dtime:3.030+/-1.780
-t:2.571 p0:[4.564+/-0.727] p1:[0.211+/-0.033] dtime:3.281+/-1.582
-t:2.571 p0:[6.015+/-0.873] p1:[0.184+/-0.031] dtime:3.777+/-1.988
-t:2.571 p0:[7.521+/-1.068] p1:[0.160+/-0.031] dtime:4.346+/-2.723
-t:2.571 p0:[9.560+/-1.271] p1:[0.127+/-0.030] dtime:5.437+/-4.366
-t:2.571 p0:[12.437+/-1.209] p1:[0.083+/-0.024] dtime:8.380+/-8.572
-t:2.571 p0:[13.303+/-1.859] p1:[0.114+/-0.032] dtime:6.059+/-6.167
-t:2.571 p0:[13.057+/-1.824] p1:[0.160+/-0.031] dtime:4.335+/-2.653
-t:2.571 p0:[14.418+/-1.593] p1:[0.173+/-0.024] dtime:4.015+/-1.667
-t:2.571 p0:[17.087+/-1.654] p1:[0.165+/-0.021] dtime:4.194+/-1.585
-t:2.571 p0:[21.314+/-2.297] p1:[0.138+/-0.024] dtime:5.012+/-2.747
-t:2.571 p0:[26.925+/-2.907] p1:[0.101+/-0.025] dtime:6.858+/-5.948
-t:2.571 p0:[34.197+/-1.535] p1:[0.059+/-0.011] dtime:11.673+/-7.019
-t:2.571 p0:[37.553+/-1.153] p1:[0.053+/-0.008] dtime:13.053+/-5.754
-t:2.571 p0:[39.323+/-1.584] p1:[0.062+/-0.010] dtime:11.207+/-5.600
-t:2.571 p0:[41.082+/-1.595] p1:[0.069+/-0.010] dtime:10.069+/-4.193
-t:2.571 p0:[42.095+/-1.228] p1:[0.083+/-0.007] dtime:8.374+/-2.010
-t:2.571 p0:[45.229+/-1.262] p1:[0.081+/-0.007] dtime:8.552+/-2.005
-t:2.571 p0:[50.618+/-2.094] p1:[0.066+/-0.010] dtime:10.564+/-5.042
-t:2.571 p0:[57.048+/-2.110] p1:[0.046+/-0.009] dtime:15.136+/-10.153
+<pre>Lets look at the growth rate of COVID-19 deaths...
 </pre>
 </div>
 </div>
@@ -1145,11 +1091,15 @@ t:2.571 p0:[57.048+/-2.110] p1:[0.046+/-0.009] dtime:15.136+/-10.153
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
+<details class="description">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p><div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># this projection is based on doubling time calculated only over the last week of data</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse</span>
+
+<span class="c1"># this projection is based on doubling time calculated only over the last week of data</span>
 <span class="n">daysfwd</span> <span class="o">=</span> <span class="mi">60</span>
 
 <span class="n">lcolors</span> <span class="o">=</span> <span class="n">colors</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span> <span class="n">colors</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span>
@@ -1263,7 +1213,8 @@ t:2.571 p0:[57.048+/-2.110] p1:[0.046+/-0.009] dtime:15.136+/-10.153
     </div>
 </div>
 </div>
-
+</p>
+    </details>
 <div class="output_wrapper">
 <div class="output">
 
@@ -1272,13 +1223,6 @@ t:2.571 p0:[57.048+/-2.110] p1:[0.046+/-0.009] dtime:15.136+/-10.153
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Calculate exponential parameters on data from 2020-04-14 to 2020-04-20, then project forward using those parameters for 34 days
 Compare with exponential parameters fit on data from 2020-03-19 to 2020-03-26
-t:2.571 p0:[1952.489+/-11.098] p1:[0.030+/-0.001] dtime:22.914+/-3.061
-t:2.447 p0:[117.793+/-5.873] p1:[0.153+/-0.009] dtime:4.522+/-0.716
-t:2.571 p0:[466.366+/-6.671] p1:[0.034+/-0.004] dtime:20.567+/-6.597
-t:2.447 p0:[20.756+/-2.468] p1:[0.171+/-0.022] dtime:4.058+/-1.453
-t:2.571 p0:[168.902+/-2.399] p1:[0.022+/-0.004] dtime:31.950+/-17.377
-t:2.571 p0:[57.048+/-2.110] p1:[0.046+/-0.009] dtime:15.136+/-10.153
-t:2.201 p0:[0.679+/-0.197] p1:[0.222+/-0.028] dtime:3.127+/-0.984
 
 
 If we didn&#39;t social distance:
@@ -1312,7 +1256,7 @@ The difference between 3/27 deaths projections and todays deaths = 745
 <p>In the early stages of an epidemic, the numbers grow exponentially: 1 becomes 2 becomes 4, becomes 8, 16, 32, etc. In 10 steps there's &gt;1,000.  In 20 steps its &gt; 1,000,000.   Something that has this kind of exponential growth curve on a linear plot  becomes a straight line on a plot with a logarithmic y-axis.</p>
 <p>And you can see in this plot that there are essentially two "straight lines" in each metric being tracked. Things have a steeper sloped line in March, and a gentler slope for the line in April.  That shows you that we were on track to have a much worse outbreak in March, but something changed.</p>
 <p>And as I said above, the thing that changed was the social distancing and various shutdowns. And the timing of the change, being almost exactly 2 weeks afterwards, suggests that the stay at home orders and shutdowns are the major reason for the good news.</p>
-<p>I will note one caveat about the death projections above.  Back in mid March we didn't have enough death data to get a really good estimate of the growth rate by 3/26. In fact, the death data projection includes data through all of March to get the slope to try to get a better estimate.  Because of this trouble, you could also consider an alternate method for projecting deaths: Just take. the current death rate of people in the hospital for OCVID-19 (about 12%) and multiply it by the projected hospitalizations from March 26th.  This yields a slighly less bad projection on COVID-19 deaths today:</p>
+<p>I will note one caveat about the death projections above.  Back in mid March we didn't have enough death data to get a really good estimate of the growth rate by 3/26. In fact, the death data projection includes data through all of March to get the slope to try to get a better estimate.  Because of this trouble, you could also consider an alternate method for projecting deaths: Just take. the current death rate of people in the hospital for COVID-19 (about 12%) and multiply it by the projected hospitalizations from March 26th.  This yields a slighly less bad projection on COVID-19 deaths today:</p>
 
 </div>
 </div>
@@ -1320,25 +1264,29 @@ The difference between 3/27 deaths projections and todays deaths = 745
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
+<details class="description">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p><div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Alternate prediction of dead COVID-19 patients today if we had not been social distancing:&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Alternate prediction of dead COVID-19 patients today without social distancing:&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:d}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span> <span class="n">orig_projhosp</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">today</span><span class="p">]</span> <span class="o">*</span> <span class="n">frac</span><span class="p">[</span><span class="s1">&#39;Deaths&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])))</span>
 </pre></div>
 
     </div>
 </div>
 </div>
-
+</p>
+    </details>
 <div class="output_wrapper">
 <div class="output">
 
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Alternate prediction of dead COVID-19 patients today if we had not been social distancing:
+<pre>Alternate prediction of dead COVID-19 patients today without social distancing:
 628
 </pre>
 </div>
@@ -1380,11 +1328,14 @@ The difference between 3/27 deaths projections and todays deaths = 745
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
+<details class="description">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p><div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Pessimistic number of county only (ignores federal) beds/icu beds available on March 20th from kpbs article above</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse</span>
+<span class="c1"># Pessimistic number of county only (ignores federal) beds/icu beds available on March 20th from kpbs article above</span>
 <span class="n">availbeds</span> <span class="o">=</span> <span class="mi">1950</span>
 <span class="n">availicu</span> <span class="o">=</span> <span class="mi">800</span>
 
@@ -1400,7 +1351,8 @@ The difference between 3/27 deaths projections and todays deaths = 745
     </div>
 </div>
 </div>
-
+</p>
+    </details>
 <div class="output_wrapper">
 <div class="output">
 
@@ -1422,11 +1374,15 @@ optimistic estimate of capacity: 6529
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
+<details class="description">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p><div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># this projection is based on doubling time calculated only over the last week of data</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse</span>
+
+<span class="c1"># this projection is based on doubling time calculated only over the last week of data</span>
 <span class="n">daysfwd</span> <span class="o">=</span> <span class="mi">90</span>
 <span class="n">fromdate</span> <span class="o">=</span> <span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">today</span><span class="p">)</span><span class="o">-</span><span class="n">pd</span><span class="o">.</span><span class="n">Timedelta</span><span class="p">(</span><span class="s1">&#39;6 days&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">startproj</span> <span class="o">=</span> <span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">today</span><span class="p">)</span><span class="o">+</span><span class="n">pd</span><span class="o">.</span><span class="n">Timedelta</span><span class="p">(</span><span class="s1">&#39;1 day&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
@@ -1537,7 +1493,8 @@ optimistic estimate of capacity: 6529
     </div>
 </div>
 </div>
-
+</p>
+    </details>
 <div class="output_wrapper">
 <div class="output">
 
@@ -1545,11 +1502,6 @@ optimistic estimate of capacity: 6529
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Calculate exponential parameters on data from 2020-04-14 to 2020-04-20, then project forward using those parameters for 64 days
-t:2.571 p0:[1952.489+/-11.098] p1:[0.030+/-0.001] dtime:22.914+/-3.061
-t:2.447 p0:[117.793+/-5.873] p1:[0.153+/-0.009] dtime:4.522+/-0.716
-t:2.571 p0:[466.366+/-6.671] p1:[0.034+/-0.004] dtime:20.567+/-6.597
-t:2.447 p0:[20.756+/-2.468] p1:[0.171+/-0.022] dtime:4.058+/-1.453
-t:2.571 p0:[168.902+/-2.399] p1:[0.022+/-0.004] dtime:31.950+/-17.377
 Before social distancing had enough time to work, hospitals were projected to reach capacity on 2020-04-15 14:19:38.844414724
 Now I think hospitals reach capacity on 2020-05-26 10:45:20.696810614
 Or optimistically they reach capacity on 2020-07-01 07:17:15.998446332
@@ -1619,479 +1571,6 @@ Therefore the pressure on hospitals and when you will be out of capacity will be
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Below-this-is-just-some-stuff-I-started-to-scrape-the-location-data...">Below this is just some stuff I started to scrape the location data...<a class="anchor-link" href="#Below-this-is-just-some-stuff-I-started-to-scrape-the-location-data..."> </a></h2><p>But TBH I now think this is useless... there's no way the location of infection is useful except as a proxy for which hospitals are most burdened.</p>
-<p>Certainly you wouldn't want to say something like "Oh this is were you can catch the virus the best..." That's some BS because there is 1) unknown infected people out there and 2) the location is someone's DMV/voting record of residence, not necessarily where they actually live, hang out, shop, and work.</p>
-
-</div>
-</div>
-</div>
-    
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># these column locations are hand tuned </span>
-<span class="n">locations</span> <span class="o">=</span> <span class="n">read_pdf</span><span class="p">(</span><span class="s1">&#39;https://www.sandiegocounty.gov/content/dam/sdc/hhsa/programs/phs/Epidemiology/COVID-19%20Daily%20Update_City</span><span class="si">%20o</span><span class="s1">f%20Residence.pdf&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="s2">&quot;--columns 250.0,375.0&quot;</span><span class="p">,</span> <span class="n">guess</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    
-
-    
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># because I&#39;m not parsing the date out of the pdf, you should manually make sure this has been updated too before scraping!</span>
-<span class="c1"># 3/25 version</span>
-<span class="sd">&#39;&#39;&#39;locations = locations.set_index(&#39;County of San Diego&#39;)</span>
-<span class="sd">locations = locations[&#39;San Diego County&#39;:&#39;OVERALL TOTAL&#39;].dropna()</span>
-<span class="sd">locations.columns = locations.loc[&#39;San Diego County&#39;,:]</span>
-<span class="sd">locations = locations.drop(&#39;San Diego County&#39;)</span>
-<span class="sd">locations.to_csv(locf.format(today))</span>
-<span class="sd">print(today)</span>
-<span class="sd">locations&#39;&#39;&#39;</span>
-<span class="kc">None</span><span class="p">;</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    
-
-    
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># because I&#39;m not parsing the date out of the pdf, you should manually make sure this has been updated too before scraping!</span>
-<span class="c1"># 3/26 version</span>
-<span class="n">locations</span> <span class="o">=</span> <span class="n">locations</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;County of San Diego&#39;</span><span class="p">)</span>
-<span class="n">locations</span> <span class="o">=</span> <span class="n">locations</span><span class="p">[</span><span class="s1">&#39;San Diego County&#39;</span><span class="p">:</span><span class="s1">&#39;Total San Diego County Residents&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
-<span class="n">locations</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">locations</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;San Diego County&#39;</span><span class="p">,:]</span>
-<span class="n">locations</span> <span class="o">=</span> <span class="n">locations</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;San Diego County&#39;</span><span class="p">)</span>
-<span class="n">locations</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">locf</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">today</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">today</span><span class="p">)</span>
-<span class="n">locations</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>2020-04-20
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>San Diego County</th>
-      <th>Count</th>
-      <th>Percentage** of Overall Total</th>
-    </tr>
-    <tr>
-      <th>County of San Diego</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Incorporated City</td>
-      <td>2,004</td>
-      <td>86.2%</td>
-    </tr>
-    <tr>
-      <td>Carlsbad</td>
-      <td>50</td>
-      <td>2.2%</td>
-    </tr>
-    <tr>
-      <td>Chula Vista</td>
-      <td>258</td>
-      <td>11.1%</td>
-    </tr>
-    <tr>
-      <td>Coronado</td>
-      <td>7</td>
-      <td>0.3%</td>
-    </tr>
-    <tr>
-      <td>Del Mar</td>
-      <td>11</td>
-      <td>0.5%</td>
-    </tr>
-    <tr>
-      <td>El Cajon</td>
-      <td>132</td>
-      <td>5.7%</td>
-    </tr>
-    <tr>
-      <td>Encinitas</td>
-      <td>34</td>
-      <td>1.5%</td>
-    </tr>
-    <tr>
-      <td>Escondido</td>
-      <td>71</td>
-      <td>3.1%</td>
-    </tr>
-    <tr>
-      <td>Imperial Beach</td>
-      <td>14</td>
-      <td>0.6%</td>
-    </tr>
-    <tr>
-      <td>La Mesa</td>
-      <td>49</td>
-      <td>2.1%</td>
-    </tr>
-    <tr>
-      <td>Lemon Grove</td>
-      <td>19</td>
-      <td>0.8%</td>
-    </tr>
-    <tr>
-      <td>National City</td>
-      <td>66</td>
-      <td>2.8%</td>
-    </tr>
-    <tr>
-      <td>Oceanside</td>
-      <td>53</td>
-      <td>2.3%</td>
-    </tr>
-    <tr>
-      <td>Poway</td>
-      <td>21</td>
-      <td>0.9%</td>
-    </tr>
-    <tr>
-      <td>San Diego</td>
-      <td>1,127</td>
-      <td>48.5%</td>
-    </tr>
-    <tr>
-      <td>San Marcos</td>
-      <td>27</td>
-      <td>1.2%</td>
-    </tr>
-    <tr>
-      <td>Santee</td>
-      <td>24</td>
-      <td>1.0%</td>
-    </tr>
-    <tr>
-      <td>Solana Beach</td>
-      <td>6</td>
-      <td>0.3%</td>
-    </tr>
-    <tr>
-      <td>Vista</td>
-      <td>35</td>
-      <td>1.5%</td>
-    </tr>
-    <tr>
-      <td>Unincorporated</td>
-      <td>300</td>
-      <td>12.9%</td>
-    </tr>
-    <tr>
-      <td>Alpine</td>
-      <td>2</td>
-      <td>0.1%</td>
-    </tr>
-    <tr>
-      <td>Bonita</td>
-      <td>15</td>
-      <td>0.6%</td>
-    </tr>
-    <tr>
-      <td>Bonsall</td>
-      <td>1</td>
-      <td>0.0%</td>
-    </tr>
-    <tr>
-      <td>Borrego Springs</td>
-      <td>1</td>
-      <td>0.0%</td>
-    </tr>
-    <tr>
-      <td>Boulevard</td>
-      <td>2</td>
-      <td>0.1%</td>
-    </tr>
-    <tr>
-      <td>Campo</td>
-      <td>0</td>
-      <td>0.0%</td>
-    </tr>
-    <tr>
-      <td>Descanso</td>
-      <td>1</td>
-      <td>0.0%</td>
-    </tr>
-    <tr>
-      <td>Fallbrook</td>
-      <td>11</td>
-      <td>0.5%</td>
-    </tr>
-    <tr>
-      <td>Jamul</td>
-      <td>6</td>
-      <td>0.3%</td>
-    </tr>
-    <tr>
-      <td>Julian</td>
-      <td>2</td>
-      <td>0.1%</td>
-    </tr>
-    <tr>
-      <td>Lakeside</td>
-      <td>18</td>
-      <td>0.8%</td>
-    </tr>
-    <tr>
-      <td>Pauma Valley</td>
-      <td>2</td>
-      <td>0.1%</td>
-    </tr>
-    <tr>
-      <td>Potrero</td>
-      <td>2</td>
-      <td>0.1%</td>
-    </tr>
-    <tr>
-      <td>Ramona</td>
-      <td>12</td>
-      <td>0.5%</td>
-    </tr>
-    <tr>
-      <td>Ranchita</td>
-      <td>2</td>
-      <td>0.1%</td>
-    </tr>
-    <tr>
-      <td>Rancho Santa Fe</td>
-      <td>14</td>
-      <td>0.6%</td>
-    </tr>
-    <tr>
-      <td>Spring Valley</td>
-      <td>61</td>
-      <td>2.6%</td>
-    </tr>
-    <tr>
-      <td>Valley Center</td>
-      <td>4</td>
-      <td>0.2%</td>
-    </tr>
-    <tr>
-      <td>Other</td>
-      <td>144</td>
-      <td>6.2%</td>
-    </tr>
-    <tr>
-      <td>Unknown*</td>
-      <td>21</td>
-      <td>0.9%</td>
-    </tr>
-    <tr>
-      <td>Total San Diego County Residents</td>
-      <td>2,325</td>
-      <td>100.0%</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    
-
-    
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">zips</span> <span class="o">=</span> <span class="n">read_pdf</span><span class="p">(</span><span class="s1">&#39;https://www.sandiegocounty.gov/content/dam/sdc/hhsa/programs/phs/Epidemiology/COVID-19%20Summary</span><span class="si">%20o</span><span class="s1">f%20Cases%20by%20Zip%20Code.pdf&#39;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    
-
-    
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># on 4/3 the column read changed a bit, had been .iloc[1,:], now its [0,:]</span>
-<span class="c1"># on 4/5 its back to .iloc[1,:]</span>
-<span class="c1"># on 4/7 its back to [0,:]</span>
-<span class="n">zips</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">zips</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">,:]</span> 
-<span class="n">zips</span> <span class="o">=</span> <span class="n">zips</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
-<span class="n">zips</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">zips</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:</span><span class="mi">2</span><span class="p">],</span> <span class="n">zips</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">2</span><span class="p">:]])</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Zip Code&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
-<span class="n">zips</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">zipf</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">today</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">today</span><span class="p">)</span>
-<span class="n">zips</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>2020-04-20
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>1</th>
-      <th>Count</th>
-    </tr>
-    <tr>
-      <th>Zip Code</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>91901</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <td>91902</td>
-      <td>18</td>
-    </tr>
-    <tr>
-      <td>91905</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <td>91910</td>
-      <td>70</td>
-    </tr>
-    <tr>
-      <td>91911</td>
-      <td>98</td>
-    </tr>
-    <tr>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <td>92154</td>
-      <td>107</td>
-    </tr>
-    <tr>
-      <td>92161</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>92173</td>
-      <td>59</td>
-    </tr>
-    <tr>
-      <td>Unknown</td>
-      <td>31</td>
-    </tr>
-    <tr>
-      <td>Total</td>
-      <td>2325</td>
-    </tr>
-  </tbody>
-</table>
-<p>95 rows × 1 columns</p>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    
-
 </div>
 
 
