@@ -138,10 +138,34 @@ window.onload = wrap_img;
 </div>
     
 
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># &quot;The history of COVID-19 in San Diego County&quot;</span>
+<span class="o">&gt;</span> <span class="s2">&quot;I lay out the case for how the stay-at-home order, closures, and other forms of social distancing probably saved hundreds of lives.&quot;</span>
+<span class="o">-</span> <span class="n">toc</span><span class="p">:</span> <span class="n">false</span>
+<span class="o">-</span> <span class="n">branch</span><span class="p">:</span> <span class="n">master</span>
+<span class="o">-</span> <span class="n">badges</span><span class="p">:</span> <span class="n">true</span>
+<span class="o">-</span> <span class="n">comments</span><span class="p">:</span> <span class="n">true</span>
+<span class="o">-</span> <span class="n">categories</span><span class="p">:</span> <span class="p">[</span><span class="n">covid19</span><span class="p">,</span> <span class="n">jupyter</span><span class="p">,</span> <span class="n">epidemiology</span><span class="p">]</span>
+<span class="o">-</span> <span class="n">image</span><span class="p">:</span> <span class="n">images</span><span class="o">/</span><span class="n">some_folder</span><span class="o">/</span><span class="n">your_image</span><span class="o">.</span><span class="n">png</span>
+<span class="o">-</span> <span class="n">hide</span><span class="p">:</span> <span class="n">false</span>
+<span class="o">-</span> <span class="n">search_exclude</span><span class="p">:</span> <span class="n">false</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Hello!">Hello!<a class="anchor-link" href="#Hello!"> </a></h2><p>If you are here to take a look at the COVID-19 situation here in San Diego county then please let me offer you a guided tour.</p>
-<p>First off, if you're not a python programmer then my apologies for the mess.  In the future I will use some tools to clean up the appearance of the notebook and make it easier to see results instead of software.  But until I get that done, here's what you can see here:</p>
 <h3 id="Table-of-Contents---click-on-a-link-to-go-there">Table of Contents - click on a link to go there<a class="anchor-link" href="#Table-of-Contents---click-on-a-link-to-go-there"> </a></h3><p>Software: (don't care how it's made? skip ahead!)</p>
 <ul>
 <li><a href="#scrape">Code to grab data from San Diego County website</a></li>
@@ -155,6 +179,12 @@ window.onload = wrap_img;
 <li><a href="#flat">Doubling times &amp; flattening the curve</a></li>
 <li><a href="#distancing">Social distancing is what flattened the curve</a></li>
 </ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Introduction">Introduction<a class="anchor-link" href="#Introduction"> </a></h3><p>A small (yet worryingly large) group of people are currently protesting the things that are keeping us safe: stay at home orders, and closure orders for non-essential business and recreation. Some of these people are informed and honest, they say "more people will die, but freedom or the economy is more important."</p>
 <p>Some of these people don't understand fully what's going on. With this post I'm trying to reach those people. So if you say things like "COVID-19 is not so bad, look how few people have died, we need to end these restrictions" or "We already have herd immunity because it was here for months and months, so we don't need these restrictions", then please read and feel free to ask questions.</p>
 <p>I'm trying to show that social distancing, the stay at home orders, and school/park/beach closures have saved many lives. Without it San Diego hospitals would be in crisis with thousands more sick and hundreds more dead than we have today.</p>
