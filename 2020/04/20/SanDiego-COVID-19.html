@@ -203,11 +203,15 @@ window.onload = wrap_img;
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
+<details class="description">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p><div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">dateparser.search</span> <span class="kn">import</span> <span class="n">search_dates</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="kn">import</span> <span class="nn">glob</span>
@@ -227,19 +231,26 @@ window.onload = wrap_img;
     </div>
 </div>
 </div>
-
+</p>
+    </details>
 </div>
     
 
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
+<details class="description">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p><div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># I used wayback machine to collect the county data for the </span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse</span>
+
+<span class="c1"># This first part was a one time only thing, no longer necessary:</span>
+<span class="c1"># I used the wayback machine to collect the county data for the </span>
 <span class="c1"># dates before I began this project, starting with first day over 100 cases</span>
+<span class="c1"># which was March 19th</span>
 <span class="sd">&#39;&#39;&#39;get_historical_data = [</span>
 <span class="sd">    &#39;https://web.archive.org/web/20200320184055/https://www.sandiegocounty.gov/content/sdc/hhsa/programs/phs/community_epidemiology/dc/2019-nCoV/status.html&#39;,</span>
 <span class="sd">    &#39;https://web.archive.org/web/20200321141257/https://www.sandiegocounty.gov/content/sdc/hhsa/programs/phs/community_epidemiology/dc/2019-nCoV/status.html&#39;,</span>
@@ -273,6 +284,7 @@ window.onload = wrap_img;
 <span class="sd">    tab_hist[today] = table</span>
 <span class="sd">    &#39;&#39;&#39;</span><span class="p">;</span>
 
+<span class="c1"># That old data, and every day since, is now in the repo</span>
 <span class="c1"># From now on we can just load the data that&#39;s already in the repo</span>
 <span class="n">files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;Data/SDcountySituation*.csv&#39;</span><span class="p">)</span> <span class="c1"># gets all .csv filenames in directory</span>
 <span class="k">for</span> <span class="n">afile</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
@@ -284,7 +296,8 @@ window.onload = wrap_img;
     </div>
 </div>
 </div>
-
+</p>
+    </details>
 <div class="output_wrapper">
 <div class="output">
 
