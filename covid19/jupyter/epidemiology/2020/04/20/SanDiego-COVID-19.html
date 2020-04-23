@@ -109,7 +109,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      32 min read
+      33 min read
     
 </span></p>
 
@@ -615,8 +615,8 @@ The classic model of disease outbreaks is an exponential function.  One person i
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a id="fraction"></a></p>
-<h2 id="Fraction-of-confirmed-COVID-19-cases-that-get-bad,-really-bad,-and-dead">Fraction of confirmed COVID-19 cases that get bad, really bad, and dead<a class="anchor-link" href="#Fraction-of-confirmed-COVID-19-cases-that-get-bad,-really-bad,-and-dead"> </a></h2><p>I'm using these graphs to track a few things about the outbreak.  First, its good to know how many people who have the disease are ending up in hospital or worse.  Secondly, in a later section of this post, I'm using one of these estimates to help predict how many people would be dead now if we didn't social distance.</p>
-<p>However, please don't think the graph below tells you "how likely am I to die if I get it?"!! The number of confirmed COVID-19 cases is only a fraction of the true number of people infected with the virus. By some estimates most of the people carrying the virus have no symptoms. And many people who have symptoms are not getting tested.  If the fraction below says 3% die, it may be much much lower.  But right now we can't know how much lower!</p>
+<h2 id="Fraction-of-confirmed-COVID-19-cases-that-get-bad,-really-bad,-and-dead">Fraction of confirmed COVID-19 cases that get bad, really bad, and dead<a class="anchor-link" href="#Fraction-of-confirmed-COVID-19-cases-that-get-bad,-really-bad,-and-dead"> </a></h2><p>I'm using these graphs to track a few things about the outbreak.  Also, in a later section of this post, I'm using one of these estimates to help predict how many people would be dead now if we didn't social distance.</p>
+<p>Please don't think the graph below tells you "how likely am I to die if I get iinfected?"!! The number of confirmed COVID-19 cases is only a fraction of the true number of people infected with the virus. By some estimates most of the people carrying the virus have no symptoms. And many people who have symptoms are not getting tested.  If the fraction below says 3% die, the true value may be much much lower.  But right now we can't know how much lower!</p>
 
 </div>
 </div>
@@ -756,8 +756,8 @@ The classic model of disease outbreaks is an exponential function.  One person i
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a id="flat"></a></p>
-<h2 id="Is-the-curve-flattening?">Is the curve flattening?<a class="anchor-link" href="#Is-the-curve-flattening?"> </a></h2><p>Doubling time is the numbe of days it takes some measurement to double. This is a common way to see how fast a geometric/exponential growth process is taking off.  Unfortunately, the early part of an epidemic is indeed a geometric growth process. For or epidemics, small numbers are bad, they mean a steep curve.  Big numbers are good, they mean the exponential is flattening out and people are getting sick at a slower rate.</p>
-<p>Note that this kind of metric is only good when we are in the first half of epidemic.  Once we reach the peak of infections and start to have LESS people sick, this kind of metric becomes useless and my mathematical method will produce incorrect values.</p>
+<h2 id="Is-the-curve-flattening?">Is the curve flattening?<a class="anchor-link" href="#Is-the-curve-flattening?"> </a></h2><p>Doubling time is the number of days it takes some measurement to double. This is a common way to see how fast a geometric/exponential growth process is taking off.  Unfortunately, the early part of an epidemic is indeed a geometric growth process. For or epidemics, small numbers are bad, they mean a steep curve, and people are infecting others quickly.  Big numbers are good, they mean the exponential is flattening out and people are getting sick at a slower rate.</p>
+<p>Note that this kind of metric is only good when we are in the first half of epidemic.  Once we reach the peak of infections and start to have LESS people sick, the mathematical method below will produce incorrect values.  I will have to manually decide we are past peak, change the exponential to a decreasing exponential, and re-estimate doubling times of decay.  Calling the peak itself is a challenge, and I'd be happy to hear peopel's opinions on principled ways of doing so.</p>
 <p>I'm using a sliding 7 day window to see how the doubling time is changing from day to day.  I'm using t-statistic estimated 95% confidence intervals on the exponential fit to estimate a range of plausibitlty in the estimates.  When you see that April 10th has no overlap with the value on March 27th, you can be very sure that the difference is real, the curve is flattening, and it isn't just random noise causing this.</p>
 <p>TL;DR To see if the outbreak is slowing, we want the doubling time to get quite a bit bigger.  And we are seeing that, bigtime!!!  We might even be close to a peak.</p>
 <p>BUT, remember that we can always climb back onto an upward trajectory if we stop social distancing! Just because you're halfway down the mountain in your car, do you stop using your brakes?</p>
@@ -1045,15 +1045,13 @@ The classic model of disease outbreaks is an exponential function.  One person i
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a id="distancing"></a></p>
-<h2 id="Is-social-distancing-slowing-down-the-growth-in-COVID-cases-and-hospitalizations?">Is social distancing slowing down the growth in COVID cases and hospitalizations?<a class="anchor-link" href="#Is-social-distancing-slowing-down-the-growth-in-COVID-cases-and-hospitalizations?"> </a></h2><p>Yes, in a big way.</p>
-<p>San Diego schools closed on March 13th. Governor Newsom ordered Californians to stay at home on March 19th.  We know that it takes about 1 week after infection for someone to feel sick, and about 2 weeks for them to get bad enough to need hospitalization <a href="https://cdc.gov/coronavirus/2019-ncov/hcp/clinical-guidance-management-patients.html">according to this link</a>.  That means that new cases being reduced by the stay-at-home order wouldn't happen until after March 26th, and the first reduction in new hospitalizations about April 2nd.</p>
-<p>I generally prefer to look at the hospitalization data because it's the least-wrong measurement we have.  The number of confirmed cases via COVID tests is undercounting how many people have the virus. Probabaly badly undercounting it.  On the other hand, most of the people who have a severe case of the disease will end up in hospital. So I'm going to use it as my main way to measure the course of the outbreak.</p>
-<p>Take a look at the yellow dots and lines on the graph below.  See where the COVID hospitalization curve below starts to bend over to a shallower slope?  A bit more than 2 wks after the stay at home order!  The case curve doesn't bend before that, but this is likely becuase we still had a huge backlog of tested people waiting for their results back then.</p>
-<p>You can also see this bending of the curve in the doubling time graphs in the last section of this notebook: We see the first increases in hospitalization doubling time are on April 4th or so. In the last weeks of March the estimated doubling time was around 3 to 5 days for all metrics: cases, hospitalizations, ICU patients, and deaths. Today the doubling time for these is around 15 - 25 days.</p>
-<p>Lets look back again at the graph below: In March the growth rate of cases, hospitalizations, and deaths is steep and steady. In April things start to bend, and today we have ended up with a steady, shallower rate of growth right now.</p>
-<p>This graph shows what I want everyone to know:</p>
-<p>If there had been no stay at home order, then that late March doubling time would have continued until today. That would mean San Diego would have many times more infections than it currently does.  There would be hundreds (or maybe by now, thousands) of more people dead if we had not all stayed at home!!</p>
-<p>Social distancing saved lives!</p>
+<h2 id="Is-social-distancing-slowing-down-the-growth-in-COVID-cases-and-hospitalizations?">Is social distancing slowing down the growth in COVID cases and hospitalizations?<a class="anchor-link" href="#Is-social-distancing-slowing-down-the-growth-in-COVID-cases-and-hospitalizations?"> </a></h2><p>Yes, in a big way. Social distancing has probably saved more than 1,200 lives in San Diego County.</p>
+<p>The closures of recreation and businesses have been hard to take, and people are understandably restless. But as we decide what to do, it’s important to make an informed decision.  Some have said that COVID-19 is just a flu, that we have overreacted. I want those people to understand why that thinking is wrong.</p>
+<p>In the first part of an epidemic, the number of infected people grows exponentially: 2 becomes 4, becomes 8, 16, etc.. In 20 doubling steps more than one million are infected.  The speed of doubling (is it 3 or 20 days to double the infected?) comes from how well the infection is spreading among people, which is determined at least partly by our social interactions.</p>
+<p>I fit exponential curves to county data on COVID-19. In mid to late March the doubling time was about 4 days. Currently it’s more like 23 days. What changed?</p>
+<p>We started social distancing in many different ways, including shutdowns and stay-at-home.  The doubling time for COVID-19 hospitalizations started to increase sharply in the days after April 3rd. It takes about two weeks for someone to get sick enough with the virus to end up in the hospital <a href="https://cdc.gov/coronavirus/2019-ncov/hcp/clinical-guidance-management-patients.html">according to this link</a>. Governor Newsom’s stay-at-home order was March 19th, sixteen days before doubling time starts to get much better.  This suggests that everyone staying at home dramatically reduced new infections almost immediately.</p>
+<p>If we had not used social distancing and stay-at-home, then April would also have had doubling times around 4 days throughout the month.  The graph below shows us what that looks like.</p>
+<p>Let me explain the plot: Each line on that graph is an exponential doubling time. When an exponential curve is plotted on a logarithmic y-axis (1, 10, 100, etc.) as we have here, it comes out as a straight line. Blue shows confirmed COVID-19 cases via testing, orange shows people hospitalized with the virus, red shows deaths of people who had the virus. Each colored measurement has two lines, one fit on numbers for March 19-26 (faded color dash-dots), and one fit on the numbers from the last week (dashed). The actual numbers recorded every day are shown as circles.</p>
 
 </div>
 </div>
@@ -1080,13 +1078,13 @@ The classic model of disease outbreaks is an exponential function.  One person i
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Compare with exponential parameters fit on data from 2020-03-19 to 2020-03-26&#39;</span><span class="p">)</span>
 
 
-<span class="n">doubling_time</span><span class="p">,</span> <span class="n">ci95</span><span class="p">,</span> <span class="n">case_p_est</span><span class="p">,</span> <span class="n">case_p_cov</span>  <span class="o">=</span> <span class="n">estimate_doubling_time</span><span class="p">(</span><span class="n">cases</span><span class="p">[</span><span class="n">fromdate</span><span class="p">:])</span>
-<span class="n">doubling_time</span><span class="p">,</span> <span class="n">ci95</span><span class="p">,</span> <span class="n">orig_case_p_est</span><span class="p">,</span> <span class="n">orig_case_p_cov</span>  <span class="o">=</span> <span class="n">estimate_doubling_time</span><span class="p">(</span><span class="n">cases</span><span class="p">[</span><span class="s1">&#39;2020-03-19&#39;</span><span class="p">:</span><span class="s1">&#39;2020-03-26&#39;</span><span class="p">])</span>
-<span class="n">doubling_time</span><span class="p">,</span> <span class="n">ci95</span><span class="p">,</span> <span class="n">hosp_p_est</span><span class="p">,</span> <span class="n">hosp_p_cov</span> <span class="o">=</span> <span class="n">estimate_doubling_time</span><span class="p">(</span><span class="n">hospitalizations</span><span class="p">[</span><span class="n">fromdate</span><span class="p">:])</span> 
-<span class="n">doubling_time</span><span class="p">,</span> <span class="n">ci95</span><span class="p">,</span> <span class="n">orig_hosp_p_est</span><span class="p">,</span> <span class="n">orig_hosp_p_cov</span> <span class="o">=</span> <span class="n">estimate_doubling_time</span><span class="p">(</span><span class="n">hospitalizations</span><span class="p">[</span><span class="s1">&#39;2020-03-19&#39;</span><span class="p">:</span><span class="s1">&#39;2020-03-26&#39;</span><span class="p">])</span>
-<span class="n">doubling_time</span><span class="p">,</span> <span class="n">ci95</span><span class="p">,</span> <span class="n">icu_p_est</span><span class="p">,</span> <span class="n">icu_p_cov</span> <span class="o">=</span> <span class="n">estimate_doubling_time</span><span class="p">(</span><span class="n">icu</span><span class="p">[</span><span class="n">fromdate</span><span class="p">:])</span>
-<span class="n">doubling_time</span><span class="p">,</span> <span class="n">ci95</span><span class="p">,</span> <span class="n">death_p_est</span><span class="p">,</span> <span class="n">death_p_cov</span> <span class="o">=</span> <span class="n">estimate_doubling_time</span><span class="p">(</span><span class="n">deaths</span><span class="p">[</span><span class="n">fromdate</span><span class="p">:])</span>
-<span class="n">doubling_time</span><span class="p">,</span> <span class="n">ci95</span><span class="p">,</span> <span class="n">orig_death_p_est</span><span class="p">,</span> <span class="n">orig_death_p_cov</span> <span class="o">=</span> <span class="n">estimate_doubling_time</span><span class="p">(</span><span class="n">deaths</span><span class="p">[</span><span class="s1">&#39;2020-03-19&#39;</span><span class="p">:</span><span class="s1">&#39;2020-03-31&#39;</span><span class="p">])</span>
+<span class="n">doubling_time_case</span><span class="p">,</span> <span class="n">ci95</span><span class="p">,</span> <span class="n">case_p_est</span><span class="p">,</span> <span class="n">case_p_cov</span>  <span class="o">=</span> <span class="n">estimate_doubling_time</span><span class="p">(</span><span class="n">cases</span><span class="p">[</span><span class="n">fromdate</span><span class="p">:])</span>
+<span class="n">doubling_time_case_orig</span><span class="p">,</span> <span class="n">ci95</span><span class="p">,</span> <span class="n">orig_case_p_est</span><span class="p">,</span> <span class="n">orig_case_p_cov</span>  <span class="o">=</span> <span class="n">estimate_doubling_time</span><span class="p">(</span><span class="n">cases</span><span class="p">[</span><span class="s1">&#39;2020-03-19&#39;</span><span class="p">:</span><span class="s1">&#39;2020-03-26&#39;</span><span class="p">])</span>
+<span class="n">doubling_time_hosp</span><span class="p">,</span> <span class="n">ci95</span><span class="p">,</span> <span class="n">hosp_p_est</span><span class="p">,</span> <span class="n">hosp_p_cov</span> <span class="o">=</span> <span class="n">estimate_doubling_time</span><span class="p">(</span><span class="n">hospitalizations</span><span class="p">[</span><span class="n">fromdate</span><span class="p">:])</span> 
+<span class="n">doubling_time_hosp_orig</span><span class="p">,</span> <span class="n">ci95</span><span class="p">,</span> <span class="n">orig_hosp_p_est</span><span class="p">,</span> <span class="n">orig_hosp_p_cov</span> <span class="o">=</span> <span class="n">estimate_doubling_time</span><span class="p">(</span><span class="n">hospitalizations</span><span class="p">[</span><span class="s1">&#39;2020-03-19&#39;</span><span class="p">:</span><span class="s1">&#39;2020-03-26&#39;</span><span class="p">])</span>
+<span class="n">doubling_time_icu</span><span class="p">,</span> <span class="n">ci95</span><span class="p">,</span> <span class="n">icu_p_est</span><span class="p">,</span> <span class="n">icu_p_cov</span> <span class="o">=</span> <span class="n">estimate_doubling_time</span><span class="p">(</span><span class="n">icu</span><span class="p">[</span><span class="n">fromdate</span><span class="p">:])</span>
+<span class="n">doubling_time_death</span><span class="p">,</span> <span class="n">ci95</span><span class="p">,</span> <span class="n">death_p_est</span><span class="p">,</span> <span class="n">death_p_cov</span> <span class="o">=</span> <span class="n">estimate_doubling_time</span><span class="p">(</span><span class="n">deaths</span><span class="p">[</span><span class="n">fromdate</span><span class="p">:])</span>
+<span class="n">doubling_time_death_orig</span><span class="p">,</span> <span class="n">ci95</span><span class="p">,</span> <span class="n">orig_death_p_est</span><span class="p">,</span> <span class="n">orig_death_p_cov</span> <span class="o">=</span> <span class="n">estimate_doubling_time</span><span class="p">(</span><span class="n">deaths</span><span class="p">[</span><span class="s1">&#39;2020-03-19&#39;</span><span class="p">:</span><span class="s1">&#39;2020-03-31&#39;</span><span class="p">])</span>
 
 
 
@@ -1230,11 +1228,66 @@ The difference between 3/27 deaths projections and todays deaths = 1176
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Let me help you understand the graph: I used SD County's own counts of COVID-19 patients.  I'm going to make the example about hospitalizations, but the same method applies to confirmed cases and deaths. Two prediction lines are made by fitting exponential parameters to the number of people hospitalized with COVID19 from March 19 - 26 and to hospitalizations in the last week.</p>
-<p>Note that these graphs have a y-axis which is logarithmic: it goes up 10, 100, 1000, 10000, etc... In the early stages of an epidemic, the numbers grow exponentially: 1 becomes 2 becomes 4, becomes 8, 16, 32, etc. In 10 steps there's &gt;1,000.  In 20 steps its &gt; 1,000,000.   Something that has this kind of exponential growth curve becomes a straight line on a plot with a logarithmic y-axis. The advantage of the logrithmic y-axis is that it lets you see what's going on when things are down at 10's of people even when the numbers stretch into the 10,000's.  On a normal linear y-axis (1,2,3,4,5...) you would not be able to see the shape of the line at low numbers: having the maximum y-value be in the 10,000's would squash a lot of the lower values of the curve into a tiny tiny space.</p>
-<p>And you can see in this plot that there are essentially two "straight lines" in each metric being tracked. There's a steeper sloped line in March, and a gentler slope for the line in April.  That shows you that we were on track to have a much worse outbreak in March, but something changed.</p>
-<p>And as I said above, the thing that changed was the social distancing and various shutdowns. And the timing of the change, being almost exactly 2 weeks afterwards, suggests that the stay at home orders and shutdowns are the major reason for the good news.</p>
-<p>Now obviouisly you can't be sure what exactly caused the change. It could be the fear that kept people at home and nothing to do with regulations, it could be the school closures, it could be the governor's stay at home order, it could be park closures and restaurants being take-away only.  It could be all of these in different measures. But you can be VERY sure that our behavior changed in a big way sometime in mid to late March, and that caused a very different outcome to our COVID-19 epidemic in San Diego county.</p>
+<p>I generally prefer to look at the hospitalization data because it's the least-wrong measurement we have.  The number of confirmed cases via COVID tests is undercounting how many people have the virus. Probabaly badly undercounting it.  On the other hand, most of the people who have a severe case of the disease will end up in hospital. So I'm going to use it as my main way to measure the course of the outbreak.</p>
+<p>Take a look at the orange dots and lines on the graph below.  See where the COVID hospitalization curve below starts to bend over to a shallower slope?  A bit more than 2 wks after the stay at home order!  The case curve doesn't bend before that, but this is likely becuase we still had a huge backlog of tested people waiting for their results back then.</p>
+<p>You can also see this bending of the curve in the doubling time graphs in the last section of this notebook: We see the first increases in hospitalization doubling time are on April 4th or so. In the last weeks of March the estimated doubling time was around 4 to 5 days for all metrics: cases, hospitalizations, ICU patients, and deaths. Today the doubling time for these is around 15 - 25 days.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's talk about deaths. If you want to see how many people would be dead today if we’d kept doubling every 4 days throughout April do this: find today’s date on the x-axis, go straight up until you find the faded red dash-dot line, then go straight left and read the number off the y-axis.</p>
+<p>If you do this, you’ll get the same answer I did:</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<details class="description">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p><div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> people would be dead today of COVID-19 without social distancing.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">orig_projected</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">today</span><span class="p">,</span><span class="s1">&#39;Deaths projected on 2020-03-27&#39;</span><span class="p">])</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Instead we have just </span><span class="si">{}</span><span class="s1"> dead, because our doubling time is now about </span><span class="si">{}</span><span class="s1"> days, which is shown by the much shallower-sloped dashed lines projecting forward from today.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+    <span class="n">actual</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">today</span><span class="p">,</span><span class="s1">&#39;Deaths history&#39;</span><span class="p">],</span> <span class="nb">int</span><span class="p">(</span><span class="n">doubling_time_hosp</span><span class="p">)</span> <span class="p">)</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+</p>
+    </details>
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>1272 people would be dead today of COVID-19 without social distancing.
+Instead we have just 96 dead, because our doubling time is now about 22 days, which is shown by the much shallower-sloped dashed lines projecting forward from today.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The curve has flattened dramatically. Stay-at-home and social distancing are working!!</p>
+<p>Clearly we can’t assign credit to any particular action, whether by individuals or the government.  We only know that the complete package has worked. Please keep in mind that in the days ahead we will be running an experiment on ourselves, loosening one restriction or another, waiting for a few weeks to see if we get a return to bad doubling times. If so, restrictions may return.</p>
+<p>The main point of this letter is that all the pain we’ve experienced saved many lives.  Here in San Diego, it’s clearly true. I hope it’s true across our state and nation as well. COVID-19 is not the flu, and without some combination of social distancing, stay-at-home, and various closures we would be in deep trouble.</p>
+<p>Just how much trouble?  Without those interventions, today the number of people projected to be hospitalized (orange faded dash-dot line) exceeds the number of hospital beds we have available. You can see more of this analysis in the section below.</p>
+<p>If that's correct, San Diego today could look like northern Italy or New York City’s worst hit hospitals, with patients lying in hallways largely unattended by medical staff. That’s a recipe sure to increase the death toll.</p>
 <p>TL;DR SOCIAL DISTANCING WORKS!!@!#!</p>
 <p>I will note one caveat about the death projections above.  Back in mid March we didn't have enough death data to get a really good estimate of the growth rate by 3/26. In fact, the death data projection includes data through all of March to get the slope to try to get a better estimate.  Because of this trouble, you could also consider an alternate method for projecting deaths: Just take. the current death rate of people in the hospital for COVID-19 (about 14%) and multiply it by the projected hospitalizations from March 26th.  This yields a slighly less bad projection on COVID-19 deaths today:</p>
 
@@ -1499,9 +1552,10 @@ ICUs reach capacity on 2020-06-25 01:21:24.950010099
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>When there are more patients than beds, people die more often than if there was good care available (see wha's happened in NYC and northern Italy). <a href="https://kpbs.org/news/2020/mar/20/data-suggests-san-diego-hospitals-will-be-overfill/">On March 20th KPBS said there were about 1850 available hospital beds for COVID19 patients</a>  Probably there are several hundred or maybe a couple of thousand more by now. People aren't doing elective hospital procedures anymore, and there are at least 250 new beds added to the system as I outlined above.</p>
-<p>But assume for a minute that 1850 were all the beds there were. And assume social distancing didn't happen.  Then today we be out of beds and San Diego hospitals would be in crisis... take a look at the graph above... that 1850 number is the pessimistic hospital capacity line.  You can see that if we followed the same path we were on in early March, today we would have many more people in hospital than there were available beds.  The current situation might  be like in hard hit parts of NYC: patients lying in the hallways, left largely unattended because there aren't enough people to care for them.</p>
-<p>Now what about the path we are now?  The doubling time of hospitlaization is much slower right now, but it's still not flat. But we have flattened the curve, and bought ourselves enough time to add hospital capacity so we can avoid a NYC situation. When the projections are flat, horizontal lines then we will be able to breathe a sigh of relief. That's the point at which its safe to relax the stay at home orders and social distancing in small steps.</p>
+<p>When there are more patients than beds, people die more often than if there was good care available, this is what's happened in hard hit parts of NYC and northern Italy. In Italy the death rate is about 30%, here its closer to 3%.  And it's a good bet that most of that is due to the way their hospitals were completely overwhelmed.</p>
+<p>And assume social distancing didn't happen.  Then today we be out of beds and San Diego hospitals would be in crisis... take a look at the graph above... that 1850 number is the pessimistic hospital capacity line, 3600 is the optimisitc one.  You can see that if we followed the same path we were on in early March, today we would have many more people in hospital than there were available beds, even under the optimistic estimate.  The current situation might be like in Italy: patients lying in the hallways, left largely unattended because there aren't enough people to care for them.</p>
+<p>Now what about the path we are now?  The doubling time of hospitlaization is much slower right now, but it's still not flat. But we have flattened the curve, and bought ourselves enough time to add hospital capacity so we can avoid a NYC situation. When the projections are flat, horizontal lines then we will be able to breathe a sigh of relief.</p>
+<p>That's the point at which its safe to relax the stay at home orders and social distancing in small steps.</p>
 <p>And yet even then we must be careful.  It is clear that the disease could come roaring back into our region again.  We must be vigilant, and ready to put into place some control measures once again if necessary.</p>
 
 </div>
