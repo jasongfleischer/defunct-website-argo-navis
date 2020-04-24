@@ -1,6 +1,6 @@
 ---
 title: "Did the 80s or the 90s have better movies?"
-summary: "I want to test a theory that the mid 80s (specifically 84-86) were unusually good at generating classic/iconic. Or do I just think so because that's my teen years?"
+descripton: "I want to test a theory that the mid 80s (specifically 84-86) were unusually good at generating classic/iconic. Or do I just think so because that's my teen years?"
 toc: false
 comments: true
 hide: false
@@ -16,12 +16,12 @@ Here's what I learned:
 2. A friend told me that I was an idiot to use MATLAB for this, and I should really look into this python & Jupyter notebooks stuff. 
 3. Manually configuring a webscraper is damned hard. Dedicated tools like Beautifulsoup are soooo nice!
 
-If you want, this stuff has been a repo for ages: https://github.com/jasongfleischer/Were-the-80s-or-the-90s-the-best-decade-for-films-Matlab-based-IMDB-scrapper-
+If you want, the .m/.mat files are [in this Github repo](https://github.com/jasongfleischer/Were-the-80s-or-the-90s-the-best-decade-for-films-Matlab-based-IMDB-scrapper-).
 
 Or just amuse yourself scrolling through the awfulness below:
 
-<object data="https://github.com/jasongfleischer/Were-the-80s-or-the-90s-the-best-decade-for-films-Matlab-based-IMDB-scrapper-/raw/master/imdb-scrape.pdf" type="application/pdf" width="700px" height="700px">
-    <embed src="https://github.com/jasongfleischer/Were-the-80s-or-the-90s-the-best-decade-for-films-Matlab-based-IMDB-scrapper-/raw/master/imdb-scrape.pdf">
-        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="https://github.com/jasongfleischer/Were-the-80s-or-the-90s-the-best-decade-for-films-Matlab-based-IMDB-scrapper-/raw/master/imdb-scrape.pdf">Download PDF</a>.</p>
+<object data="imdb-scrape.pdf" type="application/pdf" width="700px" height="700px">
+    <embed src="imdb-scrape.pdf">
+        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="imdb-scrape.pdf">Download PDF</a>.</p>
     </embed>
 </object>
