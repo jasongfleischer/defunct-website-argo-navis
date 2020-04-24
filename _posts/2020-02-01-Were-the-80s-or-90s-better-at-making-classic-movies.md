@@ -1,12 +1,16 @@
 ---
 title: "Did the 80s or the 90s have better movies?"
-descripton: "I want to test a theory that the mid 80s (specifically 84-86) were unusually good at generating classic/iconic. Or do I just think so because that's my teen years?"
+description: "I want to test a theory that the mid 80s (specifically 84-86) were unusually good at generating classic/iconic. Or do I just think so because that's my teen years?"
 toc: false
 comments: true
+layout: post
 hide: false
-search_exclude: flase
+search_exclude: false
 categories: [movies,matlab]
+author: Jason Fleischer
 ---
+
+# 80s v 90s
 
 This is a stupid project I did in 2015.  After I got in an argument with friends about movies, I used MATLAB to webscrape data off of IMDB to argue that 80s movies rule.  Then I copy/pasted the .m file into a document, and put the rendered plots into the document to make a psuedo-notebook, like the cool kids who used Mathematica got to play with.
 
@@ -18,10 +22,6 @@ Here's what I learned:
 
 If you want, the .m/.mat files are [in this Github repo](https://github.com/jasongfleischer/Were-the-80s-or-the-90s-the-best-decade-for-films-Matlab-based-IMDB-scrapper-).
 
-Or just amuse yourself scrolling through the awfulness below:
+I can't seem to get the .pdf file of the outputs to display inline here, so just go ahead and [click through to be awfully amused](https://github.com/jasongfleischer/Were-the-80s-or-the-90s-the-best-decade-for-films-Matlab-based-IMDB-scrapper-/blob/master/imdb-scrape.pdf)
 
-<object data="imdb-scrape.pdf" type="application/pdf" width="700px" height="700px">
-    <embed src="imdb-scrape.pdf">
-        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="imdb-scrape.pdf">Download PDF</a>.</p>
-    </embed>
-</object>
+If you're someone who's better at html & using fastpages.ai as a blog platform than me can figure out how to get the pdf to display inline, i'd love to hear from you.
