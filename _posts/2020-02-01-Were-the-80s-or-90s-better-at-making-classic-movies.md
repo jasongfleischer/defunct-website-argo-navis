@@ -1,6 +1,6 @@
 ---
 title: "Did the 80s or the 90s have better movies?"
-description: "I want to test a theory that the mid 80s (specifically 84-86) were unusually good at generating classic/iconic. Or do I just think so because that's my teen years?"
+description: "I want to test a theory that the mid 80s (specifically 84-86) were unusually good at generating classic/iconic movies. Or do I just think so because that's my teen years?"
 toc: false
 comments: true
 layout: post
