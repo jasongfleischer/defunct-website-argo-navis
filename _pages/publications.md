@@ -9,7 +9,7 @@ permalink: /publications/
 <li> L Chow, ENC Manoogian, A Alvear, JG Fleischer, H Thor, K
 Dietsche, Q Wang, JS Hodges, KS Nair, S Panda, DG Mashek. (2020)
 Effects of time restricted eating on body composition and metabolic
-measures in overweight humans: a randomized trial. Obesity, 28: 860--869. <a href="https://doi.org/10.1002/oby.22756" https://doi.org/10.1002/oby.22756</a></li>
+measures in overweight humans: a randomized trial. Obesity, 28: 860--869. <a href="https://doi.org/10.1002/oby.22756" >https://doi.org/10.1002/oby.22756</a></li>
 <li>MJ Wilkinson, ENC Manoogian, A Zadourian, H Loa, S Fakourib, A Shoghib, JG Fleischer, S Navlakha, S Panda, PR Taub. (2019) Ten-hour time-restricted eating reduces weight, blood pressure, and atherogenic lipids in patients with metabolic syndrome. Cell Metabolism,31(1):92-104, <a href="https://doi.org/10.\
 1016/j.cmet.2019.11.004">https://doi.org/10.1016/j.cmet.2019.11.004</a></li>
 <li>AT Hutchison, P Regmi, ENC Manoogian, JG Fleischer, GA
