@@ -2,8 +2,10 @@
 layout: page
 title: Publications
 permalink: /publications/
+toc: true
 ---
 
+# Peer reviewed
 <ul>
 
 <li> L Chow, ENC Manoogian, A Alvear, JG Fleischer, H Thor, K
@@ -115,3 +117,27 @@ measures in overweight humans: a randomized trial. Obesity, 28: 860--869. <a hre
           Integrated Technology Systems, Prospect, KY. <br>
           </li>
 	  </ul>
+
+# Other writing
+
+Social distancing has probably saved more than 1,200 lives in San
+Diego County. OpEd in San Diego Union-Tribune, April 23rd, 2020.
+https://www.sandiegouniontribune.com/opinion/story/2020-04-23/s
+
+# Media / Press
+
+https://www.voiceofsandiego.org/people/smart-talk-on-the-intelligence-explosion/
+
+https://www.sandiegouniontribune.com/business/biotech/sd-me-salk-genetic-signs-aging-detected-20181224-story.html
+
+https://theconversation.com/limited-eating-times-could-be-a-new-way-to-fight-obesity-and-diabetes-127154
+
+https://www.npr.org/sections/thesalt/2019/12/08/785142534/eat-for-10-hours-fast-for-14-this-daily-habit-prompts-weight-loss-study-finds
+
+https://www.mdmag.com/medical-news/time-restricted-diet-metabolic-syndrome-pilot-study
+
+https://www.youtube.com/watch?v=NYTH6bztKnk&feature=emb_logo
+
+
+
+
