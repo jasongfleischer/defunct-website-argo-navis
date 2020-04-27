@@ -22,6 +22,6 @@ Here's what I learned:
 
 If you want, the .m/.mat files are [in this Github repo](https://github.com/jasongfleischer/Were-the-80s-or-the-90s-the-best-decade-for-films-Matlab-based-IMDB-scrapper-).
 
-I can't seem to get the .pdf file of the outputs to display inline here, so just go ahead and [click through to be awfully amused](https://github.com/jasongfleischer/Were-the-80s-or-the-90s-the-best-decade-for-films-Matlab-based-IMDB-scrapper-/blob/master/imdb-scrape.pdf)
+If for some reason the embedded pdf viewer below doesn't work for you, just go ahead and [click through to be awfully amused and saddened that someone wasted their time wiht this](https://github.com/jasongfleischer/Were-the-80s-or-the-90s-the-best-decade-for-films-Matlab-based-IMDB-scrapper-/blob/master/imdb-scrape.pdf)
 
-If you're someone who's better at html & using fastpages.ai as a blog platform than me can figure out how to get the pdf to display inline, i'd love to hear from you.
+<iframe src="https://docs.google.com/gview?url=github.com/jasongfleischer/Were-the-80s-or-the-90s-the-best-decade-for-films-Matlab-based-IMDB-scrapper-/raw/master/imdb-scrape.pdf&embedded=true" style="width:100%; height:100%;" frameborder="0"></iframe>
