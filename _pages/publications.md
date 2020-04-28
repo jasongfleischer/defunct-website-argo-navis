@@ -2,7 +2,6 @@
 layout: page
 title: Publications
 permalink: /publications/
-toc: true
 ---
 
 # Peer reviewed
@@ -120,23 +119,38 @@ measures in overweight humans: a randomized trial. Obesity, 28: 860--869. <a hre
 
 # Other writing
 
-Social distancing has probably saved more than 1,200 lives in San
+- Social distancing has probably saved more than 1,200 lives in San
 Diego County. OpEd in San Diego Union-Tribune, April 23rd, 2020.
-https://www.sandiegouniontribune.com/opinion/story/2020-04-23/s
+[https://www.sandiegouniontribune.com/opinion/story/2020-04-23/s]
 
 # Media / Press
 
-https://www.voiceofsandiego.org/people/smart-talk-on-the-intelligence-explosion/
+- [https://www.voiceofsandiego.org/people/smart-talk-on-the-intelligence-explosion/]
 
-https://www.sandiegouniontribune.com/business/biotech/sd-me-salk-genetic-signs-aging-detected-20181224-story.html
+Genome Biology, 2018 paper (first author)
+- [https://www.sandiegouniontribune.com/business/biotech/sd-me-salk-genetic-signs-aging-detected-20181224-story.html]
 
-https://theconversation.com/limited-eating-times-could-be-a-new-way-to-fight-obesity-and-diabetes-127154
+- [https://www.pewtrusts.org/en/research-and-analysis/articles/2019/02/08/clues-to-your-biological-age-may-be-only-skin-deep]
 
-https://www.npr.org/sections/thesalt/2019/12/08/785142534/eat-for-10-hours-fast-for-14-this-daily-habit-prompts-weight-loss-study-finds
+- [https://www.techtimes.com/articles/236653/20181221/ai-can-predict-which-people-will-age-better-than-others.htm]
 
-https://www.mdmag.com/medical-news/time-restricted-diet-metabolic-syndrome-pilot-study
+Science Advances, 2018 paper (middle author)
+- [https://www.npr.org/sections/health-shots/2018/12/12/676118782/sleepless-no-more-in-seattle-later-school-start-time-pays-off-for-teens]
 
-https://www.youtube.com/watch?v=NYTH6bztKnk&feature=emb_logo
+- [https://www.nbcnews.com/health/health-news/more-sleep-seattle-later-school-start-helps-kids-get-zzz-n947231]
+
+- [https://www.washingtonpost.com/national/health-science/at-these-schools-later-start-times-get-an-a-plus-for-youths-needing-more-sleep/2019/02/08/e1e6a23c-23ef-11e9-81fd-b7b05d5bed90_story.html]
+
+- [http://www.seattlemag.com/article/why-we-really-are-sleepless-seattle]
+
+Cell Metabolism. 2019 paper (middle author)
+- [https://theconversation.com/limited-eating-times-could-be-a-new-way-to-fight-obesity-and-diabetes-127154]
+
+- [https://www.npr.org/sections/thesalt/2019/12/08/785142534/eat-for-10-hours-fast-for-14-this-daily-habit-prompts-weight-loss-study-finds]
+
+- [https://www.mdmag.com/medical-news/time-restricted-diet-metabolic-syndrome-pilot-study]
+
+- [https://www.youtube.com/watch?v=NYTH6bztKnk&feature=emb_logo]
 
 
 
