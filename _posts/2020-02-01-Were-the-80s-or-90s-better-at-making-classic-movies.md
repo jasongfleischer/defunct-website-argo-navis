@@ -20,7 +20,7 @@ Here's what I learned:
 2. A friend told me that I was an idiot to use MATLAB for this, and I should really look into this python & Jupyter notebooks stuff. 
 3. Manually configuring a webscraper is damned hard. Dedicated tools like Beautifulsoup are soooo nice!
 
-<iframe src="https://docs.google.com/gview?url=github.com/jasongfleischer/Were-the-80s-or-the-90s-the-best-decade-for-films-Matlab-based-IMDB-scrapper-/raw/master/imdb-scrape.pdf&embedded=true" style="width:100%; height:100%;" frameborder="0"></iframe>
+<iframe src="https://docs.google.com/gview?url=github.com/jasongfleischer/Were-the-80s-or-the-90s-the-best-decade-for-films-Matlab-based-IMDB-scrapper-/raw/master/imdb-scrape.pdf&embedded=true" style="width: 800px; height:1024px;" frameborder="0"></iframe>
 
 If you want, the .m/.mat files are [in this Github repo](https://github.com/jasongfleischer/Were-the-80s-or-the-90s-the-best-decade-for-films-Matlab-based-IMDB-scrapper-).
 
