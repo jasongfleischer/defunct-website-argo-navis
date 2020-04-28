@@ -16,7 +16,7 @@ One of the striking things about this epidemic (for me) is the increasing eviden
 
 There are several places where an outbreak has occurred in a closed population that can be instensely studied.  Several are ships: the Diamond Princess cruise ship, the American aircraft carrier Roosevelt, and the French aircraft carrier de Gaulle. Interestingly, the first one is mostly old people, while the last two are mostly young people.  It's well known at this point that age is the biggest single risk factor for serious complications and death; and the asymptomatic rate of the navy ships is around 80% where as its more like 40% for the cruise ship full of old people. There are also land locations that are very well studied, like Vo, Italy and the nation of Iceland.
 
-{% twitter https://twitter.com/EricTopol/status/1252356183077208082?s=20}
+{% twitter https://twitter.com/EricTopol/status/1252356183077208082?s=20 %}
 
 An interesting recent [summary of these natural experiments can be found from TSRI authors D. Oran and E. Topol](https://www.scripps.edu/science-and-medicine/translational-institute/about/news/sarc-cov-2-infection/index.html). TL;DR They estimate that the true underlying asymptomatic rate might be in the 40% range. I'm thinking that there probably are very different asymptomatic rates for different age groups, and that could be very important if we're going to make models for the purpose of decisions making about stay at home restrictions and closures of businesses and recreation.
 
