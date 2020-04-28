@@ -42,7 +42,7 @@ Also notable to me is that in some parameter regimes, the asymptomatic cases fal
 
 Now finally, consider [this March 20 paper by Li et al. on SARS-CoV-2 spread in China](https://science.sciencemag.org/content/early/2020/04/24/science.abb3221). They looked at the spread of the virus within China from Jan 10 - Feb 8. They estimate that
 
-1. Asymptomatic around 80%+ of carriers are asymptomatic
+1. Around 80%+ of carriers are asymptomatic
 2. Asymptomatic people are around half as good at transmitting the virus to others as a symptomatic person
 3. Because of their higher prevelance, asymptomatics are responsible for the vast majority of infections, in spite of their lower transmissibility
 
