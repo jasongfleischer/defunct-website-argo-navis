@@ -119,7 +119,7 @@ measures in overweight humans: a randomized trial. Obesity, 28: 860--869. <a hre
 
 # Other writing
 
-- [Social distancing has probably saved more than 1,200 lives in San Diego County]https://www.sandiegouniontribune.com/opinion/story/2020-04-23/) OpEd in San Diego Union-Tribune, April 23rd, 2020
+- [Social distancing has probably saved more than 1,200 lives in San Diego County](https://www.sandiegouniontribune.com/opinion/story/2020-04-23/) OpEd in San Diego Union-Tribune, April 23rd, 2020
 
 # Media / Press
 
