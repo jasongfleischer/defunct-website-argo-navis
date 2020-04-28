@@ -24,11 +24,11 @@ An interesting recent [summary of these natural experiments can be found from TS
 
 In reading up on epidemiology of SARS-CoV-2, I thought it's probably a great idea to start with models of SARS Original&trade; (ain't nothing like the real thing, baby!)  I quickly found [this 2008 paper from Hsu and Hsieh](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.442.4906&rep=rep1&type=pdf). In it they extend a normal SEIR compartmental model to include asymptomatic individuals.
 
-Some may ask, what's a compartmental model? It's just a lumped population model using differential equations.  Everyone who is *S*usceptible to the virus goes in one pot, everyone *E* xposed goes in another pot, the *I*nfected go into another, and a final pot for those who have been *R*emoved either by recovering or death. The diff eqs model how quickly people move between the pots. The rate of infection is controlled by several parameters, but dictated by how many people are in the *I* pot.  More infected people means more new exposed.  [Here's a quick explainer with math and plots](https://www.idmod.org/docs/hiv/model-seir.html) (from which i'm stealing the diagram below)
+Some may ask, what's a compartmental model? It's just a lumped population model using differential equations.  Everyone who is **S**usceptible to the virus goes in one pot, everyone **E**xposed goes in another pot, the **I**nfected go into another, and a final pot for those who have been **R**emoved either by recovering or death. The diff eqs model how quickly people move between the pots. The rate of infection is controlled by several parameters, but dictated by how many people are in the *I* pot.  More infected people means more new exposed.  [Here's a quick explainer with math and plots](https://www.idmod.org/docs/hiv/model-seir.html) (from which i'm stealing the diagram below)
 
 ![SEIR model diagram](https://www.idmod.org/docs/hiv/_images/SEIR-SEIRS.png)
 
-As with all models, this kind makes assumptions and has limitations. It doens't model the spatial spread of disease (a person is just as likely to get infected by someone many miles away,  as they are by a next door neighbor). These models also need extension to deal with modeling different subpopulations, like old vs. young.
+As with all models, this kind makes assumptions and has limitations. For example, SEIR models need extension to capture the spatial spread of disease (a person is just as likely to get infected by someone far away,  as they are by a neighbor), or to deal with young vs. old as different subpopulations.
 
 H+H add a new compartment to the model, filled with people who remain asymptomatic until they remove/recover. The critical result they have is this:
 
@@ -40,11 +40,19 @@ Why? Consider that asymptomatic people could  spread the disease more easily, be
 
 Also notable to me is that in some parameter regimes, the asymptomatic cases fall to 0 last, meaning a change in conditions, like the lifting of restrictions, could potentially reignite an outbreak from them.
 
-# Thought experiment
+Now finally, consider [this March 20 paper by Li et al. on SARS-CoV-2 spread in China](https://science.sciencemag.org/content/early/2020/04/24/science.abb3221). They looked at the spread of the virus within China from Jan 10 - Feb 8. They estimate that
+
+1. Asymptomatic around 80%+ of carriers are asymptomatic
+2. Asymptomatic people are around half as good at transmitting the virus to others as a symptomatic person
+3. Because of their higher prevelance, asymptomatics are responsible for the vast majority of infections, in spite of their lower transmissibility
+
+This naturally raises the question of what happens when you plug in the estimates from Li et. al. into H+H.... And the problem is I am (1)  too busy with a preschooler in my household, to the point that Ishouldn't have taken an hour to write this post; and (2) I have no dedicated software for this kind of modeling.  Anyone out there interested in this?
+
+# A thought experiment
 
 What happens in cases where an asymptomatic person is brought into close contact with a susceptible person.  Like nursing homes, where a caretaker is often lifting old people in and out of bed?  Or when bars reopen and people pair off joyously because they haven't had the chance in weeks?  Something much different than when asymptomatic people pass by each other in a grocery store 6 ft away.
 
-Anyway, I'd love to see more modeling of this kind being used for decision making about restrictions.  I'd love to see people do things to combine age group models and asymptomatic models.  Anyone working on this?
+Anyway, I'd love to see more modeling of this kind being used for decision making about restrictions.  I'd love to see people do things to combine age group models and asymptomatic models.  Is anyone already doing it that I'm not aware of?
 
 
 
