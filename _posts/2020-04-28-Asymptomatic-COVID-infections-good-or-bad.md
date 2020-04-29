@@ -52,7 +52,7 @@ This naturally raises the question of what happens when you do an analysis in th
 
 What happens in cases where an asymptomatic person is brought into close contact with a susceptible person.  Like nursing homes, where a caretaker is often lifting old people in and out of bed?  Or when bars reopen and people pair off joyously because they haven't had the chance in weeks?  Something much different than when asymptomatic people pass by each other in a grocery store 6 ft away.
 
-My current daydream is the idea of a metapopulation SEIAR style model with subpopulations representing different age groups. Exploring the parameters of ineraction beween the age groups as well as asymptomatic transmission.
+My current daydream is the idea of a metapopulation SEIAR style model with subpopulations representing different age groups. Exploring the parameters of ineraction beween the age groups as well as asymptomatic transmission. And yeah, we need data about asymptomaticity that includes age information.
 
 I'd love to see more modeling of this kind being used for decision making about restrictions.  I'd love to see people do things to combine age group models and asymptomatic models.  Is anyone already doing it that I'm not aware of?
 
