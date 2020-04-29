@@ -46,13 +46,15 @@ Now finally, consider [this March 20 paper by Li et al. on SARS-CoV-2 spread in 
 2. Asymptomatic people are around half as good at transmitting the virus to others as a symptomatic person
 3. Because of their higher prevelance, asymptomatics are responsible for the vast majority of infections, in spite of their lower transmissibility
 
-This naturally raises the question of what happens when you plug in the estimates from Li et. al. into H+H.... And the problem is I am (1)  too busy with a preschooler in my household, to the point that Ishouldn't have taken an hour to write this post; and (2) I have no dedicated software for this kind of modeling.  Anyone out there interested in this?
+This naturally raises the question of what happens when you do an analysis in the style of H+H on the mdoel from Li et al.  I am not a real epidemiology modeler, just a data scientists and computational modeler who's used to working with biological research data. Also I'm stuck at home with a preschooler and I shouldn't even have taken the hour off from my real work to write this blog post.  Anyone out there interested in this?
 
 # A thought experiment
 
 What happens in cases where an asymptomatic person is brought into close contact with a susceptible person.  Like nursing homes, where a caretaker is often lifting old people in and out of bed?  Or when bars reopen and people pair off joyously because they haven't had the chance in weeks?  Something much different than when asymptomatic people pass by each other in a grocery store 6 ft away.
 
-Anyway, I'd love to see more modeling of this kind being used for decision making about restrictions.  I'd love to see people do things to combine age group models and asymptomatic models.  Is anyone already doing it that I'm not aware of?
+My current daydream is the idea of a metapopulation SEIAR style model with subpopulations representing different age groups. Exploring the parameters of ineraction beween the age groups as well as asymptomatic transmission.
+
+I'd love to see more modeling of this kind being used for decision making about restrictions.  I'd love to see people do things to combine age group models and asymptomatic models.  Is anyone already doing it that I'm not aware of?
 
 
 
