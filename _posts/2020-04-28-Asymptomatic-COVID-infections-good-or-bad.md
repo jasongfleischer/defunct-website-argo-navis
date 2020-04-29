@@ -12,7 +12,7 @@ author: Jason Fleischer
 
 # Asymptomatic individuals with SARS-CoV-2
 
-One of the striking things about this epidemic (for me) is the increasing evidence that a metric fuckton (that's a scientific term, y'all) of infected people may be completely asymptomatic. And I'm not talking about people who are infected who later develop the symptoms as the disease progresses. I'm talking about people who are carriers but never display symptoms, even far after the normal incubation period.
+One of the striking things about this epidemic (for me) is the increasing evidence that a metric ton (that's a scientific term, y'all) of infected people may be completely asymptomatic. And I'm not talking about people who are infected who later develop the symptoms as the disease progresses. I'm talking about people who are carriers but never display symptoms, even far after the normal incubation period.
 
 There are several places where an outbreak has occurred in a closed population that can be instensely studied.  Several are ships: the Diamond Princess cruise ship, the American aircraft carrier Roosevelt, and the French aircraft carrier de Gaulle. Interestingly, the first one is mostly old people, while the last two are mostly young people.  It's well known at this point that age is the biggest single risk factor for serious complications and death; and the asymptomatic rate of the navy ships is around 50-60% where as its more like 40% for the cruise ship full of old people. There are also other well-studied populations/locations, and some of these have  asymptomaticity estimates into the 80% range!
 
