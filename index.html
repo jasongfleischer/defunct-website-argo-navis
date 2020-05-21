@@ -62,17 +62,22 @@ In my previous
 
 <a href="cv.pdf">See my CV for a complete list of publications</a>
 
-<div class="container">
-    <div class="row">
-        <div class="col-sm-8">
-	  {{
-	  # Blog posts
 
-	  }}
-	</div>
-	<div class="col-sm-4">
-	  {% twitter https://twitter.com/jasongfleischer maxwidth=500 limit=5 %}
-	</div>
-    </div>
-</div>
+<style>
+table th:first-of-type {
+    width: 60%;
+}
+table th:nth-of-type(2) {
+    width: 10%;
+}
+table th:nth-of-type(3) {
+    width: 30%;
+}
+
+</style>
+
+| ---- | ---- | ---- |
+| # Blog posts |   | {% twitter https://twitter.com/jasongfleischer maxwidth=500 limit=5 %} |
+| ---- | ---- | ---- |
+
     
